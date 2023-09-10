@@ -1,0 +1,21 @@
+server:
+  port: 18011
+spring:
+  application:
+    name: tics-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://127.0.0.1:18848
+      config:
+        server-addr: http://127.0.0.1:18848
+
+    gateway:
+      enabled: true
+      routes:
+        # 翻译服务路由
+        - id: translation
+          uri: lb://tics-translation  # 导入负载均衡依赖，然后使用微服务名称作为路由
+#          uri: http://localhost:18001  直接输入地址路由
+          predicates:
+            - Path=/translation/**
