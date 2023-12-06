@@ -19,9 +19,7 @@
         <module>tics-search</module>
         <module>tics-recommend</module>
         <module>tics-translation</module>
-        <module>tics-word</module>
         <module>tics-content</module>
-        <module>tics-channel</module>
         <module>tics-platform</module>
         <module>tics-learn</module>
         <module>tics-message</module>
@@ -29,6 +27,13 @@
         <module>tics-test</module>
         <module>tics-transaction</module>
         <module>tics-sentinel</module>
+        <module>tics-comment</module>
+        <module>tics-dictionary</module>
+        <module>tics-tag</module>
+        <module>tics-exercise</module>
+        <module>tics-achievement</module>
+        <module>tics-store</module>
+        <module>tics-point</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -45,6 +50,8 @@
         <spring-alibaba-cloud.version>2021.1</spring-alibaba-cloud.version>
         <java.version>1.8</java.version>
         <spring-boot.version>2.6.13</spring-boot.version>
+        <spring-cloud-starter-oauth2.version>2.1.2.RELEASE</spring-cloud-starter-oauth2.version>
+        <spring-cloud-starter-security>2.1.2.RELEASE</spring-cloud-starter-security>
     </properties>
 
     <dependencyManagement>
@@ -71,6 +78,18 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <!-- Spring2021淘汰了基于OAuth2.0的安全框架，改用了OAuth2.1的Authorization Server -->
+            <!-- 所以这里需要手动引入这个依赖，后面可能会更新到Authorization Server -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-oauth2</artifactId>
+                <version>${spring-cloud-starter-oauth2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-security</artifactId>
+                <version>${spring-cloud-starter-security}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

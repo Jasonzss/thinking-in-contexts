@@ -19,3 +19,12 @@ spring:
 #          uri: http://localhost:18001  直接输入地址路由
           predicates:
             - Path=/translation/**
+      globalcors: # 设置CORS跨域资源访问
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:5173" # 前端路径
+            allowedMethods:
+              - GET
+              - POST
+              - DELETE
+              - PUT

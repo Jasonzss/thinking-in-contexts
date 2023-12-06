@@ -13,7 +13,12 @@ public class CommonTranslationController {
     @GetMapping("/result")
     @ResponseBody
     public String translate(@RequestParam String word, @RequestParam String lang){
-        System.out.println("111111111111111");
-        return "翻译结果:"+word+"->"+lang;
+        return word;
+    }
+
+    @GetMapping("/result")
+    @ResponseBody
+    public String translateInContexts(@RequestParam String word, @RequestParam String sentence,@RequestParam String lang){
+        return word;
     }
 }
