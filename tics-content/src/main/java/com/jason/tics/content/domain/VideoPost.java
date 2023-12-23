@@ -1,7 +1,6 @@
-package com.jason.tics.content.domain.video;
+package com.jason.tics.content.domain;
 
-import com.jason.tics.content.domain.AbstractPost;
-import com.jason.tics.content.domain.Cover;
+import java.util.Date;
 
 /**
  * @author Jason
@@ -12,7 +11,15 @@ public class VideoPost extends AbstractPost {
     private String introduction;
     private String coverImageUrl;
 
-    @Override
+    private Date createDate;
+    private Date updateDate;
+
+    private Long postId;
+    private Long authorId;
+    private String[] tags;
+    private String title;
+    private Long quantityOfViews;
+
     public Cover getCover() {
         return new Cover(getTitle(), getCoverImageUrl(), getIntroduction());
     }

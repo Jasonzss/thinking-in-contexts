@@ -1,7 +1,6 @@
 package com.jason.tics.content.resource;
 
-import com.jason.tics.content.domain.essay.EssayPostDto;
-import com.jason.tics.content.domain.essay.EssayPost;
+import com.jason.tics.content.domain.EssayPost;
 import org.springframework.web.bind.annotation.*;
 
 /**

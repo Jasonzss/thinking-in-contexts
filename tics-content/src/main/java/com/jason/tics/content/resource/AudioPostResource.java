@@ -1,7 +1,7 @@
 package com.jason.tics.content.resource;
 
-import com.jason.tics.content.domain.audio.AudioPostDto;
-import com.jason.tics.content.domain.audio.AudioPost;
+import com.jason.tics.content.dto.AudioPostDto;
+import com.jason.tics.content.domain.AudioPost;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -27,5 +27,10 @@ public class AudioPostResource {
     @DeleteMapping("/{id}")
     public void deletePost(){
 
+    }
+
+    @GetMapping("/{id}/intro")
+    public AudioPost getPostIntro(@PathVariable long id){
+        return null;
     }
 }

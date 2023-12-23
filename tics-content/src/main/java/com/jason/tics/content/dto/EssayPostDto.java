@@ -1,18 +1,14 @@
-package com.jason.tics.content.domain.audio;
-
-import java.io.InputStream;
+package com.jason.tics.content.dto;
 
 /**
  * @author Jason
  */
-public class AudioPostDto {
+public class EssayPostDto {
     private Long postId;
     private Long channelId;
     private String[] tags;
     private String title;
-    private InputStream audio;
-    private InputStream coverImage;
-    private String introduction;
+    private String essay;
 
     public Long getPostId() {
         return postId;
@@ -46,27 +42,11 @@ public class AudioPostDto {
         this.title = title;
     }
 
-    public InputStream getAudio() {
-        return audio;
+    public String getEssay() {
+        return essay;
     }
 
-    public void setAudio(InputStream audio) {
-        this.audio = audio;
-    }
-
-    public InputStream getCoverImage() {
-        return coverImage;
-    }
-
-    public void setCoverImage(InputStream coverImage) {
-        this.coverImage = coverImage;
-    }
-
-    public String getIntroduction() {
-        return introduction;
-    }
-
-    public void setIntroduction(String introduction) {
-        this.introduction = introduction;
+    public void setEssay(String essay) {
+        this.essay = essay;
     }
 }

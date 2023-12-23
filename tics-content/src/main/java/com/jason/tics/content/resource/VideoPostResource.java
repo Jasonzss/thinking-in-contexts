@@ -1,7 +1,7 @@
 package com.jason.tics.content.resource;
 
-import com.jason.tics.content.domain.video.VideoPostDto;
-import com.jason.tics.content.domain.video.VideoPost;
+import com.jason.tics.content.dto.VideoPostDto;
+import com.jason.tics.content.domain.VideoPost;
 import org.springframework.web.bind.annotation.*;
 
 /**

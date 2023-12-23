@@ -1,7 +1,9 @@
-package com.jason.tics.content.domain.audio;
+package com.jason.tics.content.domain;
 
 import com.jason.tics.content.domain.AbstractPost;
 import com.jason.tics.content.domain.Cover;
+
+import java.util.Date;
 
 /**
  * @author Jason
@@ -10,7 +12,15 @@ import com.jason.tics.content.domain.Cover;
 public class AudioPost extends AbstractPost {
     private String audioUrl;
 
-    @Override
+    private Date createDate;
+    private Date updateDate;
+
+    private Long postId;
+    private Long authorId;
+    private String[] tags;
+    private String title;
+    private Long quantityOfViews;
+
     public Cover getCover() {
         return new Cover(getTitle(), null, null);
     }

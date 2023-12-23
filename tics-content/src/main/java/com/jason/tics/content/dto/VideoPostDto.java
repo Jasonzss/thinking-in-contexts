@@ -1,4 +1,4 @@
-package com.jason.tics.content.domain.video;
+package com.jason.tics.content.dto;
 
 import java.io.InputStream;
 

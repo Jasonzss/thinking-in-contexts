@@ -7,47 +7,35 @@ import org.springframework.stereotype.Component;
  * @author Jason
  * @since 2023/09/13 - 15:07
  */
-@Component
-public abstract class AbstractPost extends DatedEntity implements Post {
+public abstract class AbstractPost extends DatedEntity {
     private Long postId;
-    private Long ownerId;
-    private Long channelId;
-    private Long[] tagIds;
+    private Long authorId;
+    private String[] tags;
     private String title;
     private Long quantityOfViews;
 
-    @Override
     public Long getPostId() {
         return postId;
     }
 
-    @Override
-    public Long getOwnerId() {
-        return ownerId;
+    public Long getAuthorId() {
+        return authorId;
     }
 
     public void setPostId(Long postId) {
         this.postId = postId;
     }
 
-    public void setOwnerId(Long ownerId) {
-        this.ownerId = ownerId;
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
     }
 
-    public Long getChannelId() {
-        return channelId;
+    public String[] getTags() {
+        return tags;
     }
 
-    public void setChannelId(Long channelId) {
-        this.channelId = channelId;
-    }
-
-    public Long[] getTagIds() {
-        return tagIds;
-    }
-
-    public void setTagIds(Long[] tagIds) {
-        this.tagIds = tagIds;
+    public void setTags(String[] tags) {
+        this.tags = tags;
     }
 
     public String getTitle() {
