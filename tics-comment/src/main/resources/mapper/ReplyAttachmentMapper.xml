@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jason.tics.comment.persistence.mybatis.mapper.ReplyAttachmentMapper">
+    <resultMap id="reply_attachment" type="com.jason.tics.comment.core.Attachment">
+        <id column="attachment_url" property="attachmentUrl" javaType="String" jdbcType="VARCHAR"/>
+        <id column="reply_id" property="subjectId"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <select id="getReplyAttachments" resultMap="reply_attachment">
+        select * from reply_attachment where reply_id = #{replyId}
+    </select>
+
+    <insert id="saveReplyAttachments">
+        insert into reply_attachment values
+        <foreach collection="attachmentUrls" item="url" separator=",">
+            (#{replyId},#{url},now())
+        </foreach>
+    </insert>
+
+    <delete id="deleteReplyAttachments">
+        delete from reply_attachment where reply_id in
+        <foreach collection="replyIds" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

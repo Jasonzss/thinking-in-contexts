@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <!--开启属性和字段的驼峰命名法到下划线命名法的映射-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/tics_comment?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="mapper/CommentAttachmentMapper.xml"/>
+        <mapper resource="mapper/CommentLikeMapper.xml"/>
+        <mapper resource="mapper/CommentMapper.xml"/>
+        <mapper resource="mapper/ReplyAttachmentMapper.xml"/>
+        <mapper resource="mapper/ReplyLikeMapper.xml"/>
+        <mapper resource="mapper/ReplyMapper.xml"/>
+    </mappers>
+
+</configuration>

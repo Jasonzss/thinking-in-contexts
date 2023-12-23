@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jason.tics.comment.persistence.mybatis.mapper.ReplyLikeMapper">
+    <resultMap id="replyLike" type="com.jason.tics.comment.core.Like">
+        <id property="subjectId" column="reply_id"/>
+        <id property="uid" column="uid" />
+        <result property="createTime" column="create_time" />
+    </resultMap>
+
+    <select id="getReplyLikeByUid" resultMap="replyLike">
+        select * from reply_like where reply_id = #{replyId} and uid = #{uid}
+    </select>
+
+    <delete id="deleteReplyLikes">
+        delete from reply_like where reply_id in
+        <foreach collection="replyIds" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
