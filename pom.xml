@@ -45,13 +45,16 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <junit.version>4.12</junit.version>
-        <log4j.version>1.2.17</log4j.version>
+        <log4j.version>2.12.1</log4j.version>
+        <slf4j.version>1.7.30</slf4j.version>
         <spring-cloud.version>2021.0.5</spring-cloud.version>
         <spring-alibaba-cloud.version>2021.1</spring-alibaba-cloud.version>
         <java.version>1.8</java.version>
         <spring-boot.version>2.6.13</spring-boot.version>
         <spring-cloud-starter-oauth2.version>2.1.2.RELEASE</spring-cloud-starter-oauth2.version>
         <spring-cloud-starter-security>2.1.2.RELEASE</spring-cloud-starter-security>
+        <mybatis-spring-boot-starter.version>2.3.0</mybatis-spring-boot-starter.version>
+        <mybatis.version>3.5.11</mybatis.version>
     </properties>
 
     <dependencyManagement>
@@ -93,17 +96,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <dependencies>
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>5.8.15</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.12</version>
-        </dependency>
-    </dependencies>
 </project>
