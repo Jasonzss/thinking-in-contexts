@@ -12,7 +12,6 @@
         <module>tics-common</module>
         <module>tics-api</module>
         <module>tics-gateway</module>
-        <module>tics-cache</module>
         <module>tics-auth</module>
         <module>tics-user</module>
         <module>tics-rbac</module>
@@ -29,11 +28,12 @@
         <module>tics-sentinel</module>
         <module>tics-comment</module>
         <module>tics-dictionary</module>
-        <module>tics-tag</module>
         <module>tics-exercise</module>
         <module>tics-achievement</module>
         <module>tics-store</module>
         <module>tics-point</module>
+        <module>tics-file</module>
+        <module>tics-common/tics-common-jpa</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -44,6 +44,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+
         <junit.version>4.12</junit.version>
         <log4j.version>2.12.1</log4j.version>
         <slf4j.version>1.7.30</slf4j.version>
@@ -55,6 +56,10 @@
         <spring-cloud-starter-security>2.1.2.RELEASE</spring-cloud-starter-security>
         <mybatis-spring-boot-starter.version>2.3.0</mybatis-spring-boot-starter.version>
         <mybatis.version>3.5.11</mybatis.version>
+        <mybatis-plus-boot-starter.version>3.5.2</mybatis-plus-boot-starter.version>
+        <commons-fileupload.version>1.4</commons-fileupload.version>
+        <commons-io.version>2.6</commons-io.version>
+        <druid.version>1.2.8</druid.version>
     </properties>
 
     <dependencyManagement>
