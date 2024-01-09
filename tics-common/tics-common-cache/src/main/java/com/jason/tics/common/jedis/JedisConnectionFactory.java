@@ -13,10 +13,10 @@ import java.time.Duration;
 public class JedisConnectionFactory {
 
     private static final JedisPool JEDIS_POOL;
+    private static final JedisPoolConfig poolConfig = new JedisPoolConfig();
 
     static {
         // 配置连接池
-        JedisPoolConfig poolConfig = new JedisPoolConfig();
         poolConfig.setMaxTotal(8);
         poolConfig.setMaxIdle(8);
         poolConfig.setMinIdle(0);
@@ -28,5 +28,9 @@ public class JedisConnectionFactory {
 
     public static Jedis getJedis(){
         return JEDIS_POOL.getResource();
+    }
+
+    public static JedisPoolConfig getJedisPoolConfig(){
+        return poolConfig;
     }
 }
