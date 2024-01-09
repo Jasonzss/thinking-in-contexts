@@ -1,27 +1,38 @@
 package com.jason.tics.content.domain;
 
-import com.jason.tics.content.domain.AbstractPost;
-import com.jason.tics.content.domain.Cover;
+import com.baomidou.mybatisplus.annotation.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Jason
  * @since 2023/09/13 - 15:01
  */
-public class AudioPost extends AbstractPost {
+@Getter
+@Setter
+@ToString
+@TableName("audio")
+public class AudioPost {
     private String audioUrl;
+    private String introduction;
+    private String coverImageUrl;
 
-    private Date createDate;
-    private Date updateDate;
+    private Date createTime;
+    private Date updateTime;
 
-    private Long postId;
+    /**
+     * AudioId格式形如：a123456
+     */
+    @TableId(type = IdType.ASSIGN_UUID)
+    private String audioId;
     private Long authorId;
-    private String[] tags;
     private String title;
     private Long quantityOfViews;
 
-    public Cover getCover() {
-        return new Cover(getTitle(), null, null);
-    }
+    @TableField(exist = false)
+    private List<String> tags;
 }

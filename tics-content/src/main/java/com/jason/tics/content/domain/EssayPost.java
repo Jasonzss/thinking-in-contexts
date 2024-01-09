@@ -1,6 +1,12 @@
 package com.jason.tics.content.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Date;
 
@@ -8,29 +14,23 @@ import java.util.Date;
  * @author Jason
  * @since 2023/09/13 - 14:58
  */
-@Data
+@Getter
+@Setter
+@ToString
+@TableName("essay")
 public class EssayPost {
-    private Date createDate;
-    private Date updateDate;
+    private String essay;
+    private String coverImageUrl;
 
-    private Long postId;
+    private Date createTime;
+    private Date updateTime;
+
+    /**
+     * EssayId格式形如：e123456
+     */
+    @TableId(type = IdType.ASSIGN_UUID)
+    private String essayId;
     private Long authorId;
-    private String[] tags;
     private String title;
     private Long quantityOfViews;
-
-    private String essay;
-
-    public Cover getCover() {
-        String introduction = essay.length() > 50 ? essay.substring(0, 50)+"..." : essay;
-        return new Cover(getTitle(), null, introduction);
-    }
-
-    public String getEssay() {
-        return essay;
-    }
-
-    public void setEssay(String essay) {
-        this.essay = essay;
-    }
 }

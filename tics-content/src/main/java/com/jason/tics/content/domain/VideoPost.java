@@ -1,50 +1,40 @@
 package com.jason.tics.content.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Jason
  * @since 2023/09/13 - 15:00
  */
-public class VideoPost extends AbstractPost {
+@Getter
+@Setter
+@ToString
+@TableName("video")
+public class VideoPost {
     private String videoUrl;
     private String introduction;
     private String coverImageUrl;
 
-    private Date createDate;
-    private Date updateDate;
+    private Date createTime;
+    private Date updateTime;
 
-    private Long postId;
+    /**
+     * EssayId格式形如：v123456
+     */
+    @TableId(type = IdType.ASSIGN_UUID)
+    private String videoId;
     private Long authorId;
-    private String[] tags;
     private String title;
     private Long quantityOfViews;
-
-    public Cover getCover() {
-        return new Cover(getTitle(), getCoverImageUrl(), getIntroduction());
-    }
-
-    public String getVideoUrl() {
-        return videoUrl;
-    }
-
-    public void setVideoUrl(String videoUrl) {
-        this.videoUrl = videoUrl;
-    }
-
-    public String getIntroduction() {
-        return introduction;
-    }
-
-    public void setIntroduction(String introduction) {
-        this.introduction = introduction;
-    }
-
-    public String getCoverImageUrl() {
-        return coverImageUrl;
-    }
-
-    public void setCoverImageUrl(String coverImageUrl) {
-        this.coverImageUrl = coverImageUrl;
-    }
+    @TableField(exist = false)
+    private List<String> tags;
 }
