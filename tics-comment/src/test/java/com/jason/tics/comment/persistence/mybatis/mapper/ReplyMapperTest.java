@@ -1,6 +1,6 @@
 package com.jason.tics.comment.persistence.mybatis.mapper;
 
-import com.jason.tics.comment.core.ReplyDo;
+import com.jason.tics.comment.core.table.ReplyDo;
 import com.jason.tics.comment.persistence.mybatis.MybatisTest;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +15,7 @@ public class ReplyMapperTest extends MybatisTest {
 
     @Before
     public void init(){
-        replyMapper = openSessionByXml().getMapper(ReplyMapper.class);
+        replyMapper = openSessionByXmlAndProp().getMapper(ReplyMapper.class);
     }
 
     @Test

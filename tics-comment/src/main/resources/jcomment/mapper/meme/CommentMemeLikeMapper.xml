@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jason.tics.comment.persistence.mybatis.mapper.meme.CommentMemeLikeMapper">
+    <resultMap id="CommentMemeLike" type="com.jason.tics.comment.core.Like">
+        <id property="subjectId" column="comment_meme_id"/>
+        <result property="uid" column="uid"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+    <select id="getCommentMemeLike" resultMap="CommentMemeLike">
+        select * from comment_meme_like where comment_meme_id = #{commentMemeId} and uid = #{uid}
+    </select>
+</mapper>

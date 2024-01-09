@@ -1,5 +1,11 @@
 package com.jason.tics.comment.core;
 
+import com.jason.tics.comment.core.table.CommentDo;
+import com.jason.tics.comment.core.table.ReplyDo;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.util.Date;
 
 /**
@@ -7,8 +13,11 @@ import java.util.Date;
  *
  * @author Jason
  */
+@Getter
+@Setter
+@ToString
 public class Comment {
-    private Long subjectId;
+    private String subjectId;
     private Long commentId;
     private Long uid;
     private String content;
@@ -18,7 +27,10 @@ public class Comment {
 
     private ReplyDo[] replies;
     private Attachment[] attachment = null;
-    private Integer approveNum = 0;
+    private Integer likeNum = 0;
+
+    public static final String SORT_COLUMN_CREATE_TIME = "create_time";
+    public static final String SORT_COLUMN_LIKE_NUM = "like_num";
 
     public Comment() {
     }
@@ -28,81 +40,5 @@ public class Comment {
         setUid(commentDo.getUid());
         setSubjectId(commentDo.getSubjectId());
         setContent(commentDo.getContent());
-    }
-
-    //GETTER SETTER
-
-    public Long getSubjectId() {
-        return subjectId;
-    }
-
-    public void setSubjectId(Long subjectId) {
-        this.subjectId = subjectId;
-    }
-
-    public Long getCommentId() {
-        return commentId;
-    }
-
-    public void setCommentId(Long commentId) {
-        this.commentId = commentId;
-    }
-
-    public Long getUid() {
-        return uid;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public void setUid(Long uid) {
-        this.uid = uid;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-
-    public ReplyDo[] getReplies() {
-        return replies;
-    }
-
-    public void setReplies(ReplyDo[] replies) {
-        this.replies = replies;
-    }
-
-
-    public Attachment[] getAttachment() {
-        return attachment;
-    }
-
-    public void setAttachment(Attachment[] attachment) {
-        this.attachment = attachment;
-    }
-
-    public Integer getApproveNum() {
-        return approveNum;
-    }
-
-    public void setApproveNum(Integer approveNum) {
-        this.approveNum = approveNum;
     }
 }

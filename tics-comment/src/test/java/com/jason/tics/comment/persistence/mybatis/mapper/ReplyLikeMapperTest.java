@@ -12,7 +12,7 @@ public class ReplyLikeMapperTest extends MybatisTest {
 
     @Before
     public void init(){
-        replyLikeMapper = openSessionByXml().getMapper(ReplyLikeMapper.class);
+        replyLikeMapper = openSessionByXmlAndProp().getMapper(ReplyLikeMapper.class);
     }
 
     @Test

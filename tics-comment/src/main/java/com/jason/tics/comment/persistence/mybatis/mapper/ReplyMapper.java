@@ -1,6 +1,6 @@
 package com.jason.tics.comment.persistence.mybatis.mapper;
 
-import com.jason.tics.comment.core.ReplyDo;
+import com.jason.tics.comment.core.table.ReplyDo;
 import org.apache.ibatis.annotations.*;
 
 /**
@@ -35,4 +35,10 @@ public interface ReplyMapper {
 
     @Update("update reply set content = #{content} where reply_id = #{replyId}")
     int updateReplyContent(@Param("replyId") long replyId,@Param("content") String content);
+
+    @Select("select like_num from reply where reply_id = #{replyId}")
+    int getReplyLikeNum(long replyId);
+
+    @Update("update reply set like_num = #{likeNum} where reply_id = #{replyId}")
+    int updateReplyLikeNum(@Param("likeNum") int likeNum,@Param("replyId") long replyId);
 }

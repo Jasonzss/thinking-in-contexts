@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Properties;
 
 /**
  * @author Jason
@@ -24,7 +25,7 @@ public class MybatisTest {
     static {
         dataSource = new DruidDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/eas_re?useSSL=false&useUnicode=true&characterEncoding=UTF-8");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/tics_comment?useSSL=false&useUnicode=true&characterEncoding=UTF-8");
         dataSource.setUsername("root");
         dataSource.setPassword("123456");
     }
@@ -38,7 +39,13 @@ public class MybatisTest {
         return sqlSessionFactory.openSession();
     }
 
-    protected static SqlSession openSessionByXml() {
+    protected static SqlSession openSessionByXmlAndProp() {
+        Properties prop = new Properties();
+        prop.put("driver","com.mysql.cj.jdbc.Driver");
+        prop.put("url","jdbc:mysql://localhost:3306/tics_comment?useSSL=false&useUnicode=true&characterEncoding=UTF-8");
+        prop.put("username","root");
+        prop.put("password","123456");
+
         String resource = "mybatis-config.xml";
         InputStream inputStream = null;
         try {
@@ -46,6 +53,6 @@ public class MybatisTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new SqlSessionFactoryBuilder().build(inputStream).openSession();
+        return new SqlSessionFactoryBuilder().build(inputStream, prop).openSession();
     }
 }

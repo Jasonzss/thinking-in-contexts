@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jason.tics.comment.persistence.mybatis.mapper.CommentMapper">
+    <select id="listComments"  resultType="com.jason.tics.comment.core.table.CommentDo">
+        select * from comment where comment_id in
+        <foreach collection="commentIds" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
+    <select id="listSubjectCommentsByColumn" resultType="com.jason.tics.comment.core.table.CommentDo">
+        select * from comment where subject_id = #{subjectId}
+        <if test="columnName != null">
+            <!-- 天坑：order by 后的字段名不能使用#{}，而应该用${} -->
+            <!--
+                对于形如 #{variable} 的变量，Mybatis会将其视为字符串值，在变量替换成功后，缺省地给变量值加上引号。例如：
+                    order by #{variable1}
+                        假设variable1传入值为“name”，则最终SQL语句等同为：
+                    order by "name"
+            -->
+            order by ${columnName}
+            <if test="ascent">ASC</if>
+            <if test="!ascent">DESC</if>
+        </if>
+        limit #{limit} offset #{offset}
+    </select>
+
+    <delete id="deleteComments">
+        delete from comment where comment_id in
+        <foreach collection="commentIds" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

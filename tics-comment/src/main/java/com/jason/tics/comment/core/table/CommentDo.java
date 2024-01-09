@@ -1,6 +1,6 @@
-package com.jason.tics.comment.core;
+package com.jason.tics.comment.core.table;
 
-import com.jason.tics.comment.core.table.ReplyDo;
+import com.jason.tics.comment.core.Comment;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -13,8 +13,8 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-public class Reply {
-    private Long replyId;
+public class CommentDo {
+    private String subjectId;
     private Long commentId;
     private Long uid;
     private String content;
@@ -22,19 +22,18 @@ public class Reply {
     private Date createTime;
     private Date updateTime;
 
-    private Attachment[] attachment = null;
-    private Integer likeNum = 0;
+    private Integer likeNum;
 
     public static final String SORT_COLUMN_CREATE_TIME = "create_time";
     public static final String SORT_COLUMN_LIKE_NUM = "like_num";
 
-    public Reply() {
+    public CommentDo() {
     }
 
-    public Reply(ReplyDo replyDo) {
-        setCommentId(replyDo.getCommentId());
-        setUid(replyDo.getUid());
-        setReplyId(replyDo.getReplyId());
-        setContent(replyDo.getContent());
+    public CommentDo(Comment comment) {
+        setUid(comment.getUid());
+        setSubjectId(comment.getSubjectId());
+        setContent(comment.getContent());
+        setCommentId(comment.getCommentId());
     }
 }

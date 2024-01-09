@@ -1,6 +1,6 @@
 package com.jason.tics.comment.persistence.mybatis.mapper;
 
-import com.jason.tics.comment.core.CommentDo;
+import com.jason.tics.comment.core.table.CommentDo;
 import com.jason.tics.comment.persistence.mybatis.MybatisTest;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +15,7 @@ public class CommentMapperTest extends MybatisTest {
 
     @Before
     public void init(){
-        commentMapper = openSessionByXml().getMapper(CommentMapper.class);
+        commentMapper = openSessionByXmlAndProp().getMapper(CommentMapper.class);
     }
 
     @Test
@@ -30,25 +30,25 @@ public class CommentMapperTest extends MybatisTest {
 
     @Test
     public void testListSubjectCommentIds(){
-        log.debug("查看主题1的评论Id："+ Arrays.toString(commentMapper.listSubjectCommentIds(1)));
+        log.debug("查看主题1的评论Id："+ Arrays.toString(commentMapper.listSubjectCommentIds("1")));
     }
 
     @Test
     public void testListSubjectComments(){
         log.debug("查看排序分页评论"+ Arrays.toString(commentMapper
-                .listSubjectCommentsByColumn(1, null, false, 0, 2)));
+                .listSubjectCommentsByColumn("1", null, false, 0, 2)));
     }
 
     @Test
     public void testListSubjectCommentsByCreateTime(){
         log.debug(""+commentMapper.getComment(5));
         log.debug("查看排序分页评论"+ Arrays.toString(commentMapper.listSubjectCommentsByColumn(
-                1, "create_time", false, 0, 3)));
+                "1", "create_time", false, 0, 3)));
     }
 
     @Test
     public void testCountCommentBySubject(){
-        log.debug("主题1的评论数量："+commentMapper.countCommentBySubject(1));
+        log.debug("主题1的评论数量："+commentMapper.countCommentBySubject("1"));
     }
 
     @Test
@@ -61,7 +61,7 @@ public class CommentMapperTest extends MybatisTest {
         CommentDo commentDo = new CommentDo();
         commentDo.setContent("新增");
         commentDo.setUid(2L);
-        commentDo.setSubjectId(2L);
+        commentDo.setSubjectId("2");
         log.debug(""+commentMapper.addComment(commentDo));
         log.debug("新增的id："+commentDo.getCommentId());
     }

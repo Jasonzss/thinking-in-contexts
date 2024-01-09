@@ -17,7 +17,7 @@ public class CommentLikeMapperTest extends MybatisTest {
 
     @Before
     public void init() {
-        commentLikeMapper = openSessionByXml().getMapper(CommentLikeMapper.class);
+        commentLikeMapper = openSessionByXmlAndProp().getMapper(CommentLikeMapper.class);
     }
 
     @Test

@@ -13,4 +13,6 @@ public interface CommentAttachmentMapper {
     int saveCommentAttachments(@Param("commentId")long commentId,@Param("attachmentUrls") String[] attachmentUrls);
 
     int deleteCommentAttachments(@Param("commentIds")long[] commentIds);
+
+    void deleteCommentAttachmentsByUrlAndId(@Param("commentIds") long commentIds,@Param("attachments")  String[] attachments);
 }

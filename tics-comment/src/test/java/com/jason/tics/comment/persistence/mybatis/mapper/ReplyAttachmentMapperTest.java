@@ -14,7 +14,7 @@ public class ReplyAttachmentMapperTest extends MybatisTest {
 
     @Before
     public void init(){
-        replyAttachmentMapper = openSessionByXml().getMapper(ReplyAttachmentMapper.class);
+        replyAttachmentMapper = openSessionByXmlAndProp().getMapper(ReplyAttachmentMapper.class);
     }
 
     @Test
