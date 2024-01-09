@@ -14,7 +14,15 @@ public enum CommonExceptionResponseEnum implements ExceptionResponse{
     /**
      * 媒体资源相关
      */
-    MEDIA_NOT_FOUND("2001", HttpStatus.HTTP_NOT_FOUND, "无法找到资源")
+    MEDIA_NOT_FOUND("2001", HttpStatus.HTTP_NOT_FOUND, "无法找到资源"),
+    /**
+     * 数据库相关
+     */
+    NOT_SUPPORTED_ID_GENERATE_ENTITY("3001", HttpStatus.HTTP_INTERNAL_ERROR, "该实体不兼容此id生成器"),
+    /**
+     * url相关
+     */
+    BAD_URL_PARAM("4001", HttpStatus.HTTP_BAD_REQUEST, "url参数有误")
 
 
     ;
