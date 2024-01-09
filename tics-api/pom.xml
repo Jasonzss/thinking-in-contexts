@@ -12,7 +12,7 @@
     <artifactId>tics-api</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>tics-api-comment</module>
+
     </modules>
 
     <properties>
