@@ -16,6 +16,7 @@
         <module>tics-common-rocketmq</module>
         <module>tics-common-mybatis</module>
         <module>tics-common-security</module>
+        <module>tics-common-jpa</module>
     </modules>
 
     <artifactId>tics-common</artifactId>
