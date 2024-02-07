@@ -1,4 +1,4 @@
-package com.jason.tics.common.utils;
+package com.jason.tics.common.core.utils;
 
 import java.lang.reflect.Array;
 import java.math.BigDecimal;
@@ -289,7 +289,7 @@ public class UnitUtil {
              */
             CURRENT("Current", Unit.AMP_A, "电流强度"),
             /**
-             * 体积摩尔浓度（化学中的一种通用浓度单位）
+             * 电压强度
              */
             VOLTAGE("Voltage", Unit.VOL_V, "电压强度"),
 

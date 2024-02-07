@@ -1,9 +1,9 @@
-package com.jason.tics.common.exception;
+package com.jason.tics.common.core.exception;
 
 /**
  * @author Jason
  */
-public interface ExceptionResponse {
+public interface ServerResponse {
     /**
      * 获取错误编号
      * @return code
@@ -26,5 +26,5 @@ public interface ExceptionResponse {
      * 设置自定义异常信息
      * @param msg 信息
      */
-    ExceptionResponse setMsg(String msg);
+    ServerResponse setMsg(String msg);
 }

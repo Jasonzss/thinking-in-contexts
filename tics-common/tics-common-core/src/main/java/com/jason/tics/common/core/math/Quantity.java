@@ -1,7 +1,7 @@
-package com.jason.tics.common.entity;
+package com.jason.tics.common.core.math;
 
-import com.jason.tics.common.utils.UnitUtil;
-import com.jason.tics.common.utils.UnitUtil.Unit;
+import com.jason.tics.common.core.utils.UnitUtil;
+import com.jason.tics.common.core.utils.UnitUtil.Unit;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
