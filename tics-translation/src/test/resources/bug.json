@@ -1,0 +1,33 @@
+{
+  "returnPhrase":["bug"],
+  "query":"bug",
+  "errorCode":"0",
+  "l":"en2zh-CHS",
+  "tSpeakUrl":"https://openapi.youdao.com/ttsapi?q=%E9%94%99%E8%AF%AF&langType=zh-CHS&sign=E407C0BB995BF26C2B6578D65A0D41C1&salt=1706168113658&voice=4&format=mp3&appKey=24cf8a3a7e93d541&ttsVoiceStrict=false&osType=api",
+  "web":[
+    {"value":["虫","漏洞","千疮百孔","臭虫"],"key":"bug"},
+    {"value":["千年问题","千年虫","千禧虫","的千年虫"],"key":"millennium bug"},
+    {"value":["网络信标","网络爬虫","网页虫"],"key":"web bug"}
+  ],
+  "requestId":"7ed1c787-ffb0-49c4-9265-72d426570850",
+  "translation":["错误"],
+  "mTerminalDict":{"url":"https://m.youdao.com/m/result?lang=en&word=bug"},
+  "dict":{"url":"yddict://m.youdao.com/dict?le=eng&q=bug"},
+  "webdict":{"url":"http://mobile.youdao.com/dict?le=eng&q=bug"},
+  "basic":{"exam_type":["CET4","CET6","考研","SAT"],
+    "us-phonetic":"bʌɡ",
+    "phonetic":"bʌɡ",
+    "uk-phonetic":"bʌɡ",
+    "wfs":[
+      {"wf":{"name":"复数","value":"bugs"}},
+      {"wf":{"name":"第三人称单数","value":"bugs"}},
+      {"wf":{"name":"现在分词","value":"bugging"}},
+      {"wf":{"name":"过去式","value":"bugged"}},
+      {"wf":{"name":"过去分词","value":"bugged"}}
+    ],
+    "uk-speech":"https://openapi.youdao.com/ttsapi?q=bug&langType=en&sign=8FED48198280A74519D32F9D47326B56&salt=1706168113658&voice=5&format=mp3&appKey=24cf8a3a7e93d541&ttsVoiceStrict=false&osType=api",
+    "explains":["n. <美>昆虫，虫子；<非正式>小病，轻微的传染病；（计算机程序中的）漏洞，故障；窃听器；<非正式>热衷，着迷","v. <非正式>烦扰，使恼怒；装窃听器；（由于吃惊或害怕）张大眼睛，瞪大双眼"],
+    "us-speech":"https://openapi.youdao.com/ttsapi?q=bug&langType=en&sign=8FED48198280A74519D32F9D47326B56&salt=1706168113658&voice=6&format=mp3&appKey=24cf8a3a7e93d541&ttsVoiceStrict=false&osType=api"},
+  "isWord":true,
+  "speakUrl":"https://openapi.youdao.com/ttsapi?q=bug&langType=en-USA&sign=8FED48198280A74519D32F9D47326B56&salt=1706168113658&voice=4&format=mp3&appKey=24cf8a3a7e93d541&ttsVoiceStrict=false&osType=api"
+}

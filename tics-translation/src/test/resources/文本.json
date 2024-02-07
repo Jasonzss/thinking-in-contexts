@@ -1,0 +1,29 @@
+{
+  "returnPhrase":["文本"],
+  "query":"文本",
+  "errorCode":"0",
+  "l":"zh-CHS2en",
+  "tSpeakUrl":"https://openapi.youdao.com/ttsapi?q=text&langType=en-USA&sign=DC7F9EC437960B7557124BFA0BDFF272&salt=1705061234193&voice=4&format=mp3&appKey=24cf8a3a7e93d541&ttsVoiceStrict=false&osType=api",
+  "web":[
+    {"value":["Text","TXT","nvarchar","EBOOK"],"key":"文本"},
+    {"value":["text file","TXT","ASCII","Text Document"],"key":"文本文件"},
+    {"value":["HyperText","The super text is originally","Supertext","Hyanimatedext"],"key":"超文本"}
+  ],
+  "requestId":"9fbc1de8-1486-4054-bb5e-e1152199b656",
+  "translation":["text"],
+  "mTerminalDict":{
+    "url":"https://m.youdao.com/m/result?lang=zh-CHS&word=%E6%96%87%E6%9C%AC"
+  },
+  "dict":{
+    "url":"yddict://m.youdao.com/dict?le=eng&q=%E6%96%87%E6%9C%AC"
+  },
+  "webdict":{
+    "url":"http://mobile.youdao.com/dict?le=eng&q=%E6%96%87%E6%9C%AC"
+  },
+  "basic":{
+    "phonetic":"wén běn",
+    "explains":["text"]
+  },
+  "isWord":true,
+  "speakUrl":"https://openapi.youdao.com/ttsapi?q=%E6%96%87%E6%9C%AC&langType=zh-CHS&sign=6073E19C466568F2C3BAAEA569C12B1C&salt=1705061234193&voice=4&format=mp3&appKey=24cf8a3a7e93d541&ttsVoiceStrict=false&osType=api"
+}

@@ -1,0 +1,32 @@
+{
+  "returnPhrase":["develop"],
+  "query":"develop",
+  "errorCode":"0",
+  "l":"en2zh-CHS",
+  "tSpeakUrl":"https://openapi.youdao.com/ttsapi?q=%E5%BC%80%E5%8F%91&langType=zh-CHS&sign=00F90346D9EBEB80B59B716FBE444278&salt=1706167617511&voice=4&format=mp3&appKey=24cf8a3a7e93d541&ttsVoiceStrict=false&osType=api",
+  "web":[
+    {"value":["发展","开发","发挥","养成"],"key":"Develop"},
+    {"value":["开发软件"],"key":"develop software"},
+    {"value":["教材开发"],"key":"curriculum develop"}
+  ],
+  "requestId":"653a851f-3bda-4471-abbc-dd44f928d16a",
+  "translation":["开发"],
+  "mTerminalDict":{"url":"https://m.youdao.com/m/result?lang=en&word=develop"},
+  "dict":{"url":"yddict://m.youdao.com/dict?le=eng&q=develop"},
+  "webdict":{"url":"http://mobile.youdao.com/dict?le=eng&q=develop"},
+  "basic":{"exam_type":["初中","高中","CET4","CET6","考研","IELTS","商务英语"],
+    "us-phonetic":"dɪˈveləp",
+    "phonetic":"dɪˈveləp",
+    "uk-phonetic":"dɪˈveləp",
+    "wfs":[
+      {"wf":{"name":"第三人称单数","value":"develops"}},
+      {"wf":{"name":"现在分词","value":"developing"}},
+      {"wf":{"name":"过去式","value":"developed"}},
+      {"wf":{"name":"过去分词","value":"developed"}}
+    ],
+    "uk-speech":"https://openapi.youdao.com/ttsapi?q=develop&langType=en&sign=3391F64235091D68FE89044C277757F0&salt=1706167617511&voice=5&format=mp3&appKey=24cf8a3a7e93d541&ttsVoiceStrict=false&osType=api",
+    "explains":["v. （使）成长，发育，发展；逐渐形成，逐渐养成；开发，研制；出现，产生；修建，开发土地；提高，加强；患病；阐释，展开；冲洗，使底片显影；（修改旋律、和声或节奏以）展开（音乐主题）；（棋）出子"],
+    "us-speech":"https://openapi.youdao.com/ttsapi?q=develop&langType=en&sign=3391F64235091D68FE89044C277757F0&salt=1706167617511&voice=6&format=mp3&appKey=24cf8a3a7e93d541&ttsVoiceStrict=false&osType=api"},
+  "isWord":true,
+  "speakUrl":"https://openapi.youdao.com/ttsapi?q=develop&langType=en-USA&sign=3391F64235091D68FE89044C277757F0&salt=1706167617511&voice=4&format=mp3&appKey=24cf8a3a7e93d541&ttsVoiceStrict=false&osType=api"
+}

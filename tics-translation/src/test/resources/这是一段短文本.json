@@ -1,0 +1,19 @@
+{
+  "tSpeakUrl":"https://openapi.youdao.com/ttsapi?q=This+is+a+short+passage&langType=en-USA&sign=C4F7878CBE8BE839EB6A607C03D0AC0F&salt=1705062238586&voice=4&format=mp3&appKey=24cf8a3a7e93d541&ttsVoiceStrict=false&osType=api",
+  "requestId":"817a9480-586e-4867-9e1f-17ca646a9d0c",
+  "query":"这是一段短文本",
+  "translation":["This is a short passage"],
+  "mTerminalDict":{
+    "url":"https://m.youdao.com/m/result?lang=zh-CHS&word=%E8%BF%99%E6%98%AF%E4%B8%80%E6%AE%B5%E7%9F%AD%E6%96%87%E6%9C%AC"
+  },
+  "errorCode":"0",
+  "dict":{
+    "url":"yddict://m.youdao.com/dict?le=eng&q=%E8%BF%99%E6%98%AF%E4%B8%80%E6%AE%B5%E7%9F%AD%E6%96%87%E6%9C%AC"
+  },
+  "webdict":{
+    "url":"http://mobile.youdao.com/dict?le=eng&q=%E8%BF%99%E6%98%AF%E4%B8%80%E6%AE%B5%E7%9F%AD%E6%96%87%E6%9C%AC"
+  },
+  "l":"zh-CHS2en",
+  "isWord":false,
+  "speakUrl":"https://openapi.youdao.com/ttsapi?q=%E8%BF%99%E6%98%AF%E4%B8%80%E6%AE%B5%E7%9F%AD%E6%96%87%E6%9C%AC&langType=zh-CHS&sign=5EFB7026F9E5F390CE6A279BFA4ADD7D&salt=1705062238586&voice=4&format=mp3&appKey=24cf8a3a7e93d541&ttsVoiceStrict=false&osType=api"
+}

@@ -1,0 +1,15 @@
+{
+  "tSpeakUrl":"https://openapi.youdao.com/ttsapi?q=%E8%BF%99%E6%98%AF%E4%B8%80%E7%AF%87%E7%9F%AD%E6%96%87&langType=zh-CHS&sign=7929B8B9AC0ACB08E1BF45E49F0DA945&salt=1705062875022&voice=4&format=mp3&appKey=24cf8a3a7e93d541&ttsVoiceStrict=false&osType=api",
+  "requestId":"598dbf03-21a8-4563-a44d-139d4d126aea",
+  "query":"this is a short text",
+  "translation":["这是一篇短文"],
+  "mTerminalDict":{
+    "url":"https://m.youdao.com/m/result?lang=en&word=this+is+a+short+text"
+  },
+  "errorCode":"0",
+  "dict":{"url":"yddict://m.youdao.com/dict?le=eng&q=this+is+a+short+text"},
+  "webdict":{"url":"http://mobile.youdao.com/dict?le=eng&q=this+is+a+short+text"},
+  "l":"en2zh-CHS",
+  "isWord":false,
+  "speakUrl":"https://openapi.youdao.com/ttsapi?q=this+is+a+short+text&langType=en-USA&sign=498403FFBBC9B1A2C7020979CB9E55B4&salt=1705062875022&voice=4&format=mp3&appKey=24cf8a3a7e93d541&ttsVoiceStrict=false&osType=api"
+}
