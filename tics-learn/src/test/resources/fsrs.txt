@@ -1,0 +1,15 @@
+Fsrs(cardUuid=2c9770818d79974e018d7997795c0001, stability=4.0, difficulty=4.0, elapsedDays=0, repetitions=1, state=REVIEW, dayInterval=5, nextRepetition=1707645252751, lastReview=1707213252751)
+Fsrs(cardUuid=2c9770818d79974e018d7997795c0001, stability=4.0, difficulty=3.2, elapsedDays=0, repetitions=2, state=REVIEW, dayInterval=6, nextRepetition=1707731898714, lastReview=1707213498715)
+Fsrs(cardUuid=2c9770818d79974e018d7997795c0001, stability=4.0, difficulty=2.48, elapsedDays=0, repetitions=3, state=REVIEW, dayInterval=6, nextRepetition=1707731898858, lastReview=1707213498858)
+Fsrs(cardUuid=2c9770818d79974e018d7997795c0001, stability=4.0, difficulty=1.832, elapsedDays=0, repetitions=4, state=REVIEW, dayInterval=6, nextRepetition=1707731898867, lastReview=1707213498867)
+Fsrs(cardUuid=2c9770818d79974e018d7997795c0001, stability=4.0, difficulty=1.2488, elapsedDays=0, repetitions=5, state=REVIEW, dayInterval=6, nextRepetition=1707731898876, lastReview=1707213498876)
+Fsrs(cardUuid=2c9770818d79974e018d7997795c0001, stability=4.0, difficulty=1.0, elapsedDays=0, repetitions=6, state=REVIEW, dayInterval=6, nextRepetition=1707731898884, lastReview=1707213498884)
+Fsrs(cardUuid=2c9770818d79974e018d7997795c0001, stability=4.0, difficulty=1.0, elapsedDays=0, repetitions=7, state=REVIEW, dayInterval=6, nextRepetition=1707732180024, lastReview=1707213780025)
+
+...
+
+Fsrs(cardUuid=2c9770818d79974e018d7997795c0001, stability=4.0, difficulty=1.0, elapsedDays=0, repetitions=11, state=REVIEW, dayInterval=6, nextRepetition=1707732180199, lastReview=1707213780199)
+Fsrs(cardUuid=2c9770818d79974e018d7997795c0001, stability=4.0, difficulty=2.3, elapsedDays=0, repetitions=12, state=REVIEW, dayInterval=4, nextRepetition=1707559633585, lastReview=1707214033585)
+Fsrs(cardUuid=2c9770818d79974e018d7997795c0001, stability=4.0, difficulty=1.67, elapsedDays=0, repetitions=13, state=REVIEW, dayInterval=6, nextRepetition=1707732433740, lastReview=1707214033740)
+Fsrs(cardUuid=2c9770818d79974e018d7997795c0001, stability=4.0, difficulty=2.903, elapsedDays=0, repetitions=14, state=REVIEW, dayInterval=4, nextRepetition=1707559633749, lastReview=1707214033749)
+Fsrs(cardUuid=2c9770818d79974e018d7997795c0001, stability=4.0, difficulty=2.2127, elapsedDays=0, repetitions=15, state=REVIEW, dayInterval=6, nextRepetition=1707732433759, lastReview=1707214033759)
