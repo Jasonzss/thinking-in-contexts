@@ -33,7 +33,7 @@
         <module>tics-store</module>
         <module>tics-point</module>
         <module>tics-file</module>
-        <module>tics-common/tics-common-jpa</module>
+        <module>tics-api/tics-api-dictionary</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -45,6 +45,9 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
+        <lombok.version>1.18.24</lombok.version>
+        <hutool.version>5.8.15</hutool.version>
+        <guava.version>31.1-jre</guava.version>
         <junit.version>4.12</junit.version>
         <log4j.version>2.12.1</log4j.version>
         <slf4j.version>1.7.30</slf4j.version>
@@ -60,6 +63,9 @@
         <commons-fileupload.version>1.4</commons-fileupload.version>
         <commons-io.version>2.6</commons-io.version>
         <druid.version>1.2.8</druid.version>
+        <snappy-java.version>1.1.8.4</snappy-java.version>
+        <swagger.version>2.6.1</swagger.version>
+        <mahout.version>0.9</mahout.version>
     </properties>
 
     <dependencyManagement>
@@ -101,4 +107,61 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <profiles>
+        <profile>
+            <!--不同环境Profile的唯一id-->
+            <id>dev</id>
+            <properties>
+                <!--profiles.active是自定义的字段（名字随便起），自定义字段可以有多个-->
+                <profiles.active>dev</profiles.active>
+            </properties>
+            <!--默认激活开发环境-->
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <!--测试环境-->
+        <profile>
+            <id>test</id>
+            <properties>
+                <profiles.active>test</profiles.active>
+            </properties>
+        </profile>
+        <!--生产环境-->
+        <profile>
+            <id>prod</id>
+            <properties>
+                <profiles.active>prod</profiles.active>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <!--开启@符号参数注入Spring配置功能-->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <delimiters>@</delimiters>
+                    <useDefaultDelimiters>false</useDefaultDelimiters>
+                </configuration>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+
+    <repositories>
+        <!--添加间隔重复记忆算法的仓库-->
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
 </project>
