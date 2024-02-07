@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    active: @profiles.active@
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
