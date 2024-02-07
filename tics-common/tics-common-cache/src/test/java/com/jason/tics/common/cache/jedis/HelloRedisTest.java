@@ -1,4 +1,4 @@
-package com.jason.tics.common.jedis;
+package com.jason.tics.common.cache.jedis;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

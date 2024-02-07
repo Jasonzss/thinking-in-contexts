@@ -1,4 +1,4 @@
-package com.jason.tics.common.jedis;
+package com.jason.tics.common.cache.jedis;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
