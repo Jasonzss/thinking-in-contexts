@@ -3,6 +3,7 @@ package com.jason.tics.content.resource;
 import com.jason.tics.content.domain.EssayPost;
 import com.jason.tics.content.domain.dto.EssayPostDto;
 import com.jason.tics.content.service.EssayPostService;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -18,7 +19,7 @@ public class EssayPostResource {
     }
 
     @PostMapping
-    public EssayPost addEssay(EssayPostDto essayPostDto){
+    public EssayPost addEssay(@Validated @RequestBody EssayPostDto essayPostDto){
         return essayPostService.addEssay(essayPostDto);
     }
 

@@ -6,6 +6,7 @@ import com.jason.tics.content.domain.dto.CommentDto;
 import com.jason.tics.content.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -33,7 +34,7 @@ public class CommentResource {
     }
 
     @PostMapping("/{id}/comment")
-    public Comment addComment(CommentDto commentDto){
+    public Comment addComment(@Validated @RequestBody CommentDto commentDto){
         return commentService.addComment(commentDto);
     }
 

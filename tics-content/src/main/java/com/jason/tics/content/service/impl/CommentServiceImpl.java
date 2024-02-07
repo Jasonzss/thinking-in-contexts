@@ -5,8 +5,8 @@ import com.jason.tics.comment.core.Comment;
 import com.jason.tics.comment.meme.CommentMeme;
 import com.jason.tics.comment.meme.Meme;
 import com.jason.tics.comment.meme.MemeCommentArea;
-import com.jason.tics.common.exception.CommonExceptionResponseEnum;
-import com.jason.tics.common.exception.TicsException;
+import com.jason.tics.common.core.exception.ExceptionResponseEnum;
+import com.jason.tics.common.core.exception.TicsException;
 import com.jason.tics.content.domain.dto.CommentDto;
 import com.jason.tics.content.service.CommentService;
 import lombok.Getter;
@@ -37,7 +37,7 @@ public class CommentServiceImpl implements CommentService {
         } else if (sort.equals(Comment.SORT_COLUMN_LIKE_NUM)){
             return memeCommentArea.listCommentMostLikedPage(id, page, size);
         } else {
-            throw new TicsException(CommonExceptionResponseEnum.BAD_URL_PARAM);
+            throw new TicsException(ExceptionResponseEnum.BAD_URL_PARAM);
         }
     }
 

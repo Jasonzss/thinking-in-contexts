@@ -7,6 +7,7 @@ import com.jason.tics.content.service.AudioPostService;
 import com.jason.tics.content.service.AudioTextService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -26,7 +27,7 @@ public class AudioPostResource {
     }
 
     @PostMapping
-    public AudioPost addAudio(AudioPostDto audioPostDto){
+    public AudioPost addAudio(@Validated @RequestBody AudioPostDto audioPostDto){
         long uid = 0L;
         return audioPostService.addAudioPost(audioPostDto, uid);
     }

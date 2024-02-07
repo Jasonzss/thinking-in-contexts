@@ -2,8 +2,8 @@ package com.jason.tics.content.components;
 
 import com.baomidou.mybatisplus.core.incrementer.DefaultIdentifierGenerator;
 import com.baomidou.mybatisplus.core.incrementer.IdentifierGenerator;
-import com.jason.tics.common.exception.CommonExceptionResponseEnum;
-import com.jason.tics.common.exception.TicsException;
+import com.jason.tics.common.core.exception.ExceptionResponseEnum;
+import com.jason.tics.common.core.exception.TicsException;
 import com.jason.tics.content.domain.AudioPost;
 import com.jason.tics.content.domain.EssayPost;
 import com.jason.tics.content.domain.VideoPost;
@@ -28,7 +28,7 @@ public class ContentKeyGenerator extends DefaultIdentifierGenerator implements I
         }else if(entity instanceof EssayPost){
             return "e";
         }else {
-            throw new TicsException(CommonExceptionResponseEnum.NOT_SUPPORTED_ID_GENERATE_ENTITY);
+            throw new TicsException(ExceptionResponseEnum.NOT_SUPPORTED_ID_GENERATE_ENTITY);
         }
     }
 

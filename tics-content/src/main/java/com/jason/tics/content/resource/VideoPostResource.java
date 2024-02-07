@@ -7,6 +7,7 @@ import com.jason.tics.content.service.VideoPostService;
 import com.jason.tics.content.service.VideoSubtitleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -26,7 +27,7 @@ public class VideoPostResource {
     }
 
     @PostMapping
-    public VideoPost addVideo(@RequestBody VideoPostDto videoPostDto){
+    public VideoPost addVideo(@RequestBody @Validated VideoPostDto videoPostDto){
         return videoPostService.addVideo(videoPostDto);
     }
 
