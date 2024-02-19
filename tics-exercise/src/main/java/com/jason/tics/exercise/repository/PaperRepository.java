@@ -1,6 +1,6 @@
 package com.jason.tics.exercise.repository;
 
-import com.jason.tics.exercise.domain.Paper;
+import com.jason.tics.exercise.domain.exam.Paper;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

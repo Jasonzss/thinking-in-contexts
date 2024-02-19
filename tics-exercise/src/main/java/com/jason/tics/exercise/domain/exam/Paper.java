@@ -1,4 +1,4 @@
-package com.jason.tics.exercise.domain;
+package com.jason.tics.exercise.domain.exam;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,6 +1,6 @@
 package com.jason.tics.exercise.repository;
 
-import com.jason.tics.exercise.domain.WordLearningTarget;
+import com.jason.tics.exercise.domain.exercise.WordLearningTarget;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

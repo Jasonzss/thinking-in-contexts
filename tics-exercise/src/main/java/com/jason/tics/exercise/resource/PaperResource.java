@@ -1,32 +1,48 @@
 package com.jason.tics.exercise.resource;
 
-import com.jason.tics.exercise.domain.Paper;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.jason.tics.common.jpa.utils.JpaCrudUtil;
+import com.jason.tics.common.security.annotation.SortableEntity;
+import com.jason.tics.common.security.annotation.Uid;
+import com.jason.tics.exercise.domain.exam.Paper;
+import com.jason.tics.exercise.repository.PaperRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author Jason
  */
 @RequestMapping("/exercise/paper")
-@Controller
+@RestController
 public class PaperResource {
-    public Paper getPaper(long paperId){
-        return null;
+    @Autowired
+    private PaperRepository repository;
+
+    @GetMapping("/{paperId}")
+    public Paper getPaper(@PathVariable long paperId){
+        return repository.getById(paperId);
     }
 
-    public Paper getRecommendedPaper(long uid, int questionNum, String... questionType){
-        return null;
+    @GetMapping("/{paperId}/page")
+    public Page<Paper> listPager(@SortableEntity(entity = Pageable.class) Pageable pageable){
+        return repository.findAll(pageable);
     }
 
-    public void addPaper(){
-
+    @PostMapping
+    public Paper addPaper(@RequestBody @Validated Paper paper, @Uid long uid){
+        paper.setId(uid);
+        return repository.save(paper);
     }
 
-    public void deletePaper(){
-
+    @DeleteMapping("/{paperId}")
+    public void deletePaper(@PathVariable long paperId){
+        repository.deleteById(paperId);
     }
 
-    public void updatePaper(){
-
+    @PutMapping("/{paperId}")
+    public void updatePaper(@PathVariable long paperId, Paper paper){
+        JpaCrudUtil.updateResource(paper, paperId, repository);
     }
 }

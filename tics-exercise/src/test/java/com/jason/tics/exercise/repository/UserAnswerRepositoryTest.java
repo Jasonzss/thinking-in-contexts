@@ -1,8 +1,8 @@
 package com.jason.tics.exercise.repository;
 
 import com.jason.tics.exercise.ExerciseApplication;
-import com.jason.tics.exercise.domain.AnswerSheet;
-import com.jason.tics.exercise.domain.PaperAnswer;
+import com.jason.tics.exercise.domain.exam.Scantron;
+import com.jason.tics.exercise.domain.exam.PaperAnswer;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +22,9 @@ public class UserAnswerRepositoryTest {
         PaperAnswer paperAnswer = new PaperAnswer();
         paperAnswer.setId(1L);
         paperAnswer.setIdx(1);
-        AnswerSheet answerSheet = new AnswerSheet();
-        answerSheet.setId(1L);
-        paperAnswer.setAnswerSheet(answerSheet);
+        Scantron scantron = new Scantron();
+        scantron.setId(1L);
+        paperAnswer.setScantron(scantron);
         paperAnswer.setAnswer(new String[]{"回答"});
         paperAnswerRepository.save(paperAnswer);
     }

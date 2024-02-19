@@ -1,7 +1,6 @@
-package com.jason.tics.exercise.domain;
+package com.jason.tics.exercise.domain.exam;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.jason.tics.common.jpa.converter.StringArrayConverter;
 import lombok.Data;
 import lombok.ToString;
@@ -25,10 +24,10 @@ public class PaperAnswer {
      * 指定答题卡的指定第几题
      */
     @ManyToOne
-    @JoinColumn(name = "answer_sheet_id")
+    @JoinColumn(name = "scantron_id")
     @ToString.Exclude
     @JsonIgnore
-    private AnswerSheet answerSheet;
+    private Scantron scantron;
     private Integer idx;
 
     @Convert(converter = StringArrayConverter.class)

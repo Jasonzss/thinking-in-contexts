@@ -1,4 +1,4 @@
-package com.jason.tics.exercise.domain;
+package com.jason.tics.exercise.domain.exercise;
 
 import lombok.Data;
 import org.apache.commons.lang3.math.Fraction;

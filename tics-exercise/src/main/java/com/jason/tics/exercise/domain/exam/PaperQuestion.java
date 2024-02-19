@@ -1,4 +1,4 @@
-package com.jason.tics.exercise.domain;
+package com.jason.tics.exercise.domain.exam;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;

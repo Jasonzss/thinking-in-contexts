@@ -1,10 +1,7 @@
-package com.jason.tics.exercise.domain;
+package com.jason.tics.exercise.domain.exam;
 
 import com.jason.tics.common.jpa.converter.BooleanConverter;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -19,7 +16,7 @@ import java.util.List;
 @Data
 @Entity
 @Table
-public class AnswerSheet {
+public class Scantron {
     /**
      * 答题卡id
      */
@@ -42,4 +39,11 @@ public class AnswerSheet {
     private Date createTime;
     @UpdateTimestamp
     private Date updateTime;
+
+    public Scantron() {
+    }
+
+    public Scantron(Long id) {
+        this.id = id;
+    }
 }

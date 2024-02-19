@@ -13,14 +13,14 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @SpringBootTest(classes = ExerciseApplication.class)
 @Slf4j
-public class AnswerSheetTest {
+public class ScantronTest {
     @Autowired
-    private AnswerSheetRepository answerSheetRepository;
+    private ScantronRepository scantronRepository;
     @Autowired
     private ObjectMapper objectMapper;
 
     @Test
     public void test() throws JsonProcessingException {
-        log.info("查出所有的答题卡："+objectMapper.writeValueAsString(answerSheetRepository.findById(1L)));
+        log.info("查出所有的答题卡："+objectMapper.writeValueAsString(scantronRepository.findById(1L)));
     }
 }

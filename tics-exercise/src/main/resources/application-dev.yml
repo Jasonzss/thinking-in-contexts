@@ -13,3 +13,5 @@ spring:
   cache:
     redis:
       cache-null-values: true
+rocketmq:
+  name-server: localhost:9876
