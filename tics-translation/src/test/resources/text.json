@@ -33,7 +33,10 @@
       {"wf":{"name":"过去分词","value":"texted"}}
     ],
     "uk-speech":"https://openapi.youdao.com/ttsapi?q=text&langType=en&sign=85B8D83429E3013FF708CCE94981E620&salt=1705062437031&voice=5&format=mp3&appKey=24cf8a3a7e93d541&ttsVoiceStrict=false&osType=api",
-    "explains":["n. （书、杂志等中区别于图片的）正文，文字材料；（演说等的）原文；（学习某课程必读的）课本，教科书；（供讨论或回答问题的）文本，文章；（讨论等的）题目，主题；（尤指科学或学术方面的）文献；（计算机、手机等）文档；短信；（尤指引作布道主题的）圣经经文；（尤指用于手稿的）粗体正楷","v. （用手机）给……发短信"],
+    "explains":[
+      "n. （书、杂志等中区别于图片的）正文，文字材料；（演说等的）原文；（学习某课程必读的）课本，教科书；（供讨论或回答问题的）文本，文章；（讨论等的）题目，主题；（尤指科学或学术方面的）文献；（计算机、手机等）文档；短信；（尤指引作布道主题的）圣经经文；（尤指用于手稿的）粗体正楷",
+      "v. （用手机）给……发短信"
+    ],
     "us-speech":"https://openapi.youdao.com/ttsapi?q=text&langType=en&sign=85B8D83429E3013FF708CCE94981E620&salt=1705062437031&voice=6&format=mp3&appKey=24cf8a3a7e93d541&ttsVoiceStrict=false&osType=api"
   },
   "isWord":true,

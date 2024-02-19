@@ -20,7 +20,7 @@ public class YouDaoShortTextTranslateServiceTest {
 
     @Test
     public void testTranslate(){
-        log.info(service.doTranslate("bug").toString());
+        log.info(service.doTranslate("do").toString());
     }
 
     @Test

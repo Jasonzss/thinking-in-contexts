@@ -1,0 +1,36 @@
+{
+  "returnPhrase":["do"],
+  "query":"do",
+  "errorCode":"0",
+  "l":"en2zh-CHS",
+  "tSpeakUrl":"https://openapi.youdao.com/ttsapi?q=%E5%81%9A&langType=zh-CHS&sign=71DC6DF1D5EC11E6BE40A1C04A603805&salt=1707739339522&voice=4&format=mp3&appKey=24cf8a3a7e93d541&ttsVoiceStrict=false&osType=api",
+  "web":[
+    {"value":["溶解氧(Dissolved Oxygen)","执行","实施","多米尼加共和国"],"key":"DO"},
+    {"value":["截拳道","截拳讲","截拳道德语","跆拳道"],"key":"Jeet Kune Do"},
+    {"value":["废除","除去","弄死","去掉"],"key":"do away with"}],
+  "requestId":"46d21975-f5fe-4437-82d6-27a7ad44a62b",
+  "translation":["做"],
+  "mTerminalDict":{"url":"https://m.youdao.com/m/result?lang=en&word=do"},
+  "dict":{"url":"yddict://m.youdao.com/dict?le=eng&q=do"},
+  "webdict":{"url":"http://mobile.youdao.com/dict?le=eng&q=do"},
+  "basic":{"exam_type":["初中","高中","CET4","CET6","考研"],
+    "us-phonetic":"duː; də",
+    "phonetic":"duː; də",
+    "uk-phonetic":"duː; də",
+    "wfs":[
+      {"wf":{"name":"复数","value":"dos或do's"}},
+      {"wf":{"name":"第三人称单数","value":"does"}},
+      {"wf":{"name":"现在分词","value":"doing"}},
+      {"wf":{"name":"过去式","value":"did"}},
+      {"wf":{"name":"过去分词","value":"done"}}
+    ],
+    "uk-speech":"https://openapi.youdao.com/ttsapi?q=do&langType=en&sign=B3ECB66A46B41880170583D294DDF6F6&salt=1707739339522&voice=5&format=mp3&appKey=24cf8a3a7e93d541&ttsVoiceStrict=false&osType=api",
+    "explains":[
+      "v. 做，干，办（某事）；行动，表现；顺利进行，进展；从事（工作）；执行（任务）；学习，研究；解答，解决，算出；制作，做出；演出，编排（戏剧等）；仿效，模仿；完成，做好；供给，提供；走过，行过；以……速度行进；达到（一定销售额）；参观，游览，旅行；处理；适合，足够；煮制；欺骗；惩罚；（从某地方）盗窃；护理；（非正式）吸（毒）；（非正式）性交；度过（一段时间）；导致，引起；（非正式）痛打，杀死；生长；整理",
+      "aux. 与动词连用构成否定句和疑问句；用于构成疑问尾句；用于避免重复某一动词；用于强调主要动词；用于祈使句中表示礼貌；用于肯定或否定回答；用在倒装句中",
+      "n. 聚会，社交活动；要求，规定; C 大调音阶中的第一音；（口语）事件；（主英国口语）诈骗；（主英国、新西兰口语）宴会；（口语）必须做到的事情；（女子）发型","n. （Do）多（人名Dorothea和Dorothy的昵称）"
+    ],
+    "us-speech":"https://openapi.youdao.com/ttsapi?q=do&langType=en&sign=B3ECB66A46B41880170583D294DDF6F6&salt=1707739339522&voice=6&format=mp3&appKey=24cf8a3a7e93d541&ttsVoiceStrict=false&osType=api"},
+  "isWord":true,
+  "speakUrl":"https://openapi.youdao.com/ttsapi?q=do&langType=en-USA&sign=B3ECB66A46B41880170583D294DDF6F6&salt=1707739339522&voice=4&format=mp3&appKey=24cf8a3a7e93d541&ttsVoiceStrict=false&osType=api"
+}
