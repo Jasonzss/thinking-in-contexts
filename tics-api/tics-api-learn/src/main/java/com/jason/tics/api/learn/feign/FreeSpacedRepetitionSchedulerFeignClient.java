@@ -3,13 +3,20 @@ package com.jason.tics.api.learn.feign;
 import com.jason.tics.api.learn.domain.WordLearningResult;
 import com.jason.tics.common.core.response.ServerResponseEntity;
 import org.hibernate.validator.constraints.Range;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Set;
+import java.util.SortedSet;
 
 /**
  * @author Jason
  */
+@Component
+@FeignClient(value = "tics-learn")
 public interface FreeSpacedRepetitionSchedulerFeignClient {
     /**
      * 忘记;错误的答案
@@ -34,14 +41,21 @@ public interface FreeSpacedRepetitionSchedulerFeignClient {
      * @param word 被学习的词汇
      * @param rating 记忆等级，在学新单词的情况下可以为空
      */
-    ServerResponseEntity<WordLearningResult> learnWordWithRating(@NotNull long uid, @NotNull String word, @NotNull @Range(min = 0, max = 3) int rating);
+    @PutMapping("/learn/{uid}/{word}")
+    ServerResponseEntity<WordLearningResult> learnWordWithRating(
+            @NotNull @PathVariable long uid,
+            @NotNull @PathVariable String word,
+            @NotNull @Range(min = 0, max = 3) @RequestParam int rating
+    );
 
     /**
      * 批量添加新学单词
      * @param uid 用户id
      * @param word 加入学习计划的单词数组
      */
-    ServerResponseEntity<List<WordLearningResult>> addWordSchedule(long uid, List<String> word);
+    @PostMapping("/learn/{uid}")
+    ServerResponseEntity<Set<WordLearningResult>> addWordSchedule(@PathVariable long uid,
+                                                                  @RequestParam List<String> word);
 
     /**
      * 没学过
@@ -61,8 +75,9 @@ public interface FreeSpacedRepetitionSchedulerFeignClient {
     String RELEARNING = "RELEARNING";
 
     /**
-     * 综合获取用户的 0 1 2 3 状态下的单词
+     * 获取用户所有的单词学习状态
      * @param uid 用户id
      */
-    ServerResponseEntity<List<WordLearningResult>> listLearningWords(long uid);
+    @GetMapping("/learn/{uid}")
+    ServerResponseEntity<SortedSet<WordLearningResult>> listUserLearningWords(@PathVariable long uid);
 }

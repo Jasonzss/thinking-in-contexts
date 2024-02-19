@@ -15,6 +15,7 @@
         <module>tics-api-translation</module>
         <module>tics-api-dictionary</module>
         <module>tics-api-learn</module>
+        <module>tics_api_recommend</module>
     </modules>
 
     <properties>
