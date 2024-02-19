@@ -45,6 +45,13 @@ public class ServerResponseEntity<T> {
         return serverResponseEntity;
     }
 
+    public static <T> ServerResponseEntity<T> success(String msg) {
+        ServerResponseEntity<T> serverResponseEntity = new ServerResponseEntity<>();
+        serverResponseEntity.setCode(CommonServerResponse.OK.getCode());
+        serverResponseEntity.setMsg(msg);
+        return serverResponseEntity;
+    }
+
     // 返回失败请求
 
     public static <T> ServerResponseEntity<T> showFailMsg(String msg) {
@@ -70,5 +77,11 @@ public class ServerResponseEntity<T> {
         serverResponseEntity.setCode(responseEnum.getCode());
         serverResponseEntity.setData(data);
         return serverResponseEntity;
+    }
+
+    //组合功能
+
+    public static <T> ServerResponseEntity<T> successOrShowFail(boolean success, String failMsg) {
+        return success ? success() : fail(ExceptionResponseEnum.SHOW_FAIL.setMsg(failMsg));
     }
 }

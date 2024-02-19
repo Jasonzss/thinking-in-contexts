@@ -46,7 +46,12 @@ public enum ExceptionResponseEnum implements ServerResponse {
      */
     RESOURCE_NOT_FOUND("8001", HttpStatus.HTTP_NOT_FOUND, "找不到该资源"),
     UNCHANGEABLE_FIELD("8002",HttpStatus.HTTP_BAD_REQUEST, "该字段无法被修改"),
-    RESOURCE_ALREADY_EXISTS("8003",HttpStatus.HTTP_CONFLICT, "该资源已存在，无法新增")
+    RESOURCE_ALREADY_EXISTS("8003",HttpStatus.HTTP_CONFLICT, "该资源已存在，无法新增"),
+
+    /**
+     * 练习模块
+     */
+    QUESTION_NOT_EXIST("9001", HttpStatus.HTTP_NOT_FOUND, "不存在的题目")
 
 
     ;
