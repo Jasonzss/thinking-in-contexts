@@ -36,8 +36,23 @@
 
 # 程序端口信息
 
+### 中间件
+
 1. nacos：18848
 2. elasticsearch：9200、9300
 3. kibana：5601
-4. tics-translation：18001
-5. tics-gateway:18011
+4. rocketMqNameServer：9876
+5. rocketMqBroker：10909、10911
+6. redis：6379
+
+### 微服务
+
+1. tics-translation：18001
+2. tics-gateway:18011
+3. tics-file:18002
+
+### 测试
+
+1. tics-test
+   1. test-service-a：18901
+   2. test-service-b：18902
