@@ -16,7 +16,7 @@ public interface MemeMapper {
     List<Meme> listMemes();
 
     @Select("select * from meme where meme_id in #{id}")
-    List<Meme> listMemes(@Param("id") int[] id);
+    List<Meme> listMemesByIds(@Param("id") int[] id);
 
     @SelectKey(statement = "select LAST_INSERT_ID()", keyProperty = "memeId", keyColumn = "meme_id", before = false, resultType = int.class)
     @Insert("insert into meme (meme_name, meme_image, create_time) values (#{memeName}, #{memeImage}, now())")

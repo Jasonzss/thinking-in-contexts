@@ -32,7 +32,7 @@ public class MemeDaoImpl implements MemeDao {
 
     @Override
     public List<Meme> listMemes(int[] memeIds) {
-        return memeMapper.listMemes(memeIds);
+        return memeMapper.listMemesByIds(memeIds);
     }
 
 
