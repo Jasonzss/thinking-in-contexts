@@ -1,4 +1,4 @@
-package com.jason.tics.content.resource;
+package com.jason.tics.content.controller;
 
 import com.jason.tics.content.domain.EssayPost;
 import com.jason.tics.content.domain.dto.EssayPostDto;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
  * @author Jason
  */
 @RequestMapping("essay")
-public class EssayPostResource {
+public class EssayPostController {
     private EssayPostService essayPostService;
 
     @GetMapping("/{id}")

@@ -1,4 +1,4 @@
-package com.jason.tics.content.resource;
+package com.jason.tics.content.controller;
 
 import cn.hutool.db.PageResult;
 import com.jason.tics.comment.core.Comment;
@@ -8,14 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author Jason
  */
 @Controller
 @RequestMapping(path = {"/video", "/audio", "essay"})
-public class CommentResource {
+public class CommentController {
     @Autowired
     private CommentService commentService;
 

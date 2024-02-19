@@ -1,4 +1,4 @@
-package com.jason.tics.content.resource;
+package com.jason.tics.content.controller;
 
 import com.jason.tics.content.domain.AudioText;
 import com.jason.tics.content.domain.dto.AudioPostDto;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RequestMapping("audio")
 @Controller
-public class AudioPostResource {
+public class AudioPostController {
     @Autowired
     private AudioPostService audioPostService;
     @Autowired

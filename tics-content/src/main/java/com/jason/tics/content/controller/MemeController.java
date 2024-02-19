@@ -1,4 +1,4 @@
-package com.jason.tics.content.resource;
+package com.jason.tics.content.controller;
 
 import com.jason.tics.comment.meme.CommentMeme;
 import com.jason.tics.comment.meme.Meme;
@@ -15,7 +15,7 @@ import java.util.List;
  * @author Jason
  */
 @Controller
-public class MemeResource {
+public class MemeController {
     @Autowired
     private CommentService commentService;
 

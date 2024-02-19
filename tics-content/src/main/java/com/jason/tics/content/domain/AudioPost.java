@@ -21,7 +21,9 @@ public class AudioPost {
     private String introduction;
     private String coverImageUrl;
 
+    @TableField(fill = FieldFill.INSERT)
     private Date createTime;
+    @TableField(fill = FieldFill.UPDATE)
     private Date updateTime;
 
     /**

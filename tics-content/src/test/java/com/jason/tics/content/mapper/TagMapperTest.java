@@ -24,6 +24,6 @@ public class TagMapperTest {
     @Test
     public void testGet(){
         Wrapper<Tag> wrapper = new QueryWrapper<>();
-        log.info(""+tagMapper.selectList(wrapper));
+        log.info("查看所有tag:"+tagMapper.selectList(wrapper));
     }
 }

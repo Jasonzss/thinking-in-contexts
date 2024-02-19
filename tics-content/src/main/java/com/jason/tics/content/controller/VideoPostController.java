@@ -1,4 +1,4 @@
-package com.jason.tics.content.resource;
+package com.jason.tics.content.controller;
 
 import com.jason.tics.content.domain.VideoSubtitle;
 import com.jason.tics.content.domain.dto.VideoPostDto;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RequestMapping("/video")
 @Controller
-public class VideoPostResource {
+public class VideoPostController {
     @Autowired
     private VideoPostService videoPostService;
     @Autowired
