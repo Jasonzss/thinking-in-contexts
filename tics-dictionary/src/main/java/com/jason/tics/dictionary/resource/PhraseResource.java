@@ -1,7 +1,7 @@
 package com.jason.tics.dictionary.resource;
 
 import com.jason.tics.common.core.response.ServerResponseEntity;
-import com.jason.tics.common.jpa.utils.ResourceUtil;
+import com.jason.tics.common.jpa.utils.JpaCrudUtil;
 import com.jason.tics.common.security.annotation.SortableEntity;
 import com.jason.tics.dictionary.domain.Phrase;
 import com.jason.tics.dictionary.repository.PhraseRepository;
@@ -45,6 +45,6 @@ public class PhraseResource {
 
     @PutMapping("/{id}")
     public ServerResponseEntity<Phrase> updatePhrase(@PathVariable long id, @RequestBody @Validated Phrase phrase){
-        return ServerResponseEntity.success(ResourceUtil.updateResource(phrase, id, phraseRepository));
+        return ServerResponseEntity.success(JpaCrudUtil.updateResource(phrase, id, phraseRepository));
     }
 }

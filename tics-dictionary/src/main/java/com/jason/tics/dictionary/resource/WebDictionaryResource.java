@@ -3,7 +3,7 @@ package com.jason.tics.dictionary.resource;
 import com.jason.tics.common.security.annotation.Uid;
 import com.jason.tics.common.core.exception.ExceptionResponseEnum;
 import com.jason.tics.common.core.response.ServerResponseEntity;
-import com.jason.tics.common.jpa.utils.ResourceUtil;
+import com.jason.tics.common.jpa.utils.JpaCrudUtil;
 import com.jason.tics.dictionary.domain.web.WebDictionary;
 import com.jason.tics.dictionary.domain.web.WebTranslation;
 import com.jason.tics.dictionary.repository.WebDictionaryRepository;
@@ -67,7 +67,7 @@ public class WebDictionaryResource {
 
     @PutMapping("/web/translation")
     public ServerResponseEntity<WebTranslation> updateWebTranslation(@Validated @RequestBody WebTranslation webTranslation){
-        return ServerResponseEntity.success(ResourceUtil
+        return ServerResponseEntity.success(JpaCrudUtil
                 .updateResource(webTranslation, webTranslation.getId(), webTranslationRepository));
     }
 }

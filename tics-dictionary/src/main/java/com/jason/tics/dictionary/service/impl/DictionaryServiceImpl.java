@@ -2,14 +2,18 @@ package com.jason.tics.dictionary.service.impl;
 
 import com.jason.tics.api.translation.bo.TranslationResult;
 import com.jason.tics.api.translation.feign.TranslationFeignClient;
+import com.jason.tics.common.cache.constant.DictionaryCacheNames;
 import com.jason.tics.dictionary.domain.BookWord;
 import com.jason.tics.dictionary.domain.vo.DictionaryVo;
 import com.jason.tics.dictionary.repository.*;
 import com.jason.tics.dictionary.service.DictionaryService;
 import com.jason.tics.dictionary.service.DomainTranslationService;
+import com.jason.tics.dictionary.service.QueryStringService;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +25,7 @@ import java.util.List;
  */
 @Service
 @Setter
+@Slf4j
 public class DictionaryServiceImpl implements DictionaryService {
     @Autowired
     private TranslationFeignClient translationFeignClient;
@@ -44,12 +49,18 @@ public class DictionaryServiceImpl implements DictionaryService {
     private EtymologyRepository etymologyRepository;
     @Autowired
     private BookWordRepository bookWordRepository;
+    @Autowired
+    private QueryStringService queryStringService;
 
     /**
      * TODO 这样的分开查询后再合并有点慢，后续可替换成mybatis
+     * @param uid 用户id，如果为游客查询或者是其他无需id的场景则输入0
      */
     @Override
+    @Cacheable(cacheNames = DictionaryCacheNames.DICTIONARY_KEY, keyGenerator = "dictionaryCacheKeyGenerator")
     public DictionaryVo getDictionary(String query, long uid) {
+        query = queryStringService.handleQueryString(query);
+        log.info("get dictionary of {}", query);
         TranslationResult result = translationFeignClient.translate(query, null).getData();
         DictionaryVo d = new DictionaryVo();
         d.setTarget(query);

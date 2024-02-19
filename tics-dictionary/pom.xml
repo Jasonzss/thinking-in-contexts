@@ -37,6 +37,11 @@
             <artifactId>tics-common-security</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.jason</groupId>
+            <artifactId>tics-common-cache</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -58,6 +63,11 @@
         <dependency>
             <groupId>com.jason</groupId>
             <artifactId>tics-api-translation</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jason</groupId>
+            <artifactId>tics-api-dictionary</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

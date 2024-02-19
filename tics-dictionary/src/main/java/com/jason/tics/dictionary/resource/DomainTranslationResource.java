@@ -1,6 +1,6 @@
 package com.jason.tics.dictionary.resource;
 
-import com.jason.tics.common.jpa.utils.ResourceUtil;
+import com.jason.tics.common.jpa.utils.JpaCrudUtil;
 import com.jason.tics.common.security.annotation.Uid;
 import com.jason.tics.common.core.response.ServerResponseEntity;
 import com.jason.tics.dictionary.domain.DomainTranslation;
@@ -45,7 +45,7 @@ public class DomainTranslationResource {
 
     @PutMapping("/domain/{id}")
     public ServerResponseEntity<DomainTranslation> updateDomainTranslation(DomainTranslation domainTranslation){
-        return ServerResponseEntity.success(ResourceUtil.updateResource(domainTranslation,
+        return ServerResponseEntity.success(JpaCrudUtil.updateResource(domainTranslation,
                 domainTranslation.getId(), domainTranslationRepository));
     }
 }

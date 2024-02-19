@@ -53,4 +53,8 @@ public class Synonym {
         private String one;
         private String two;
     }
+
+    public String getSynonym(String word){
+        return word.equals(one) ? two : one;
+    }
 }

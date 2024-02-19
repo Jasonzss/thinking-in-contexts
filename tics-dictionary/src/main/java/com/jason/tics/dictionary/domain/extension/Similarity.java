@@ -59,4 +59,8 @@ public class Similarity {
             this.two = two;
         }
     }
+
+    public String getSimilarity(String word){
+        return word.equals(one) ? two : one;
+    }
 }
