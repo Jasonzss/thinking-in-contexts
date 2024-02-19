@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Set;
+import java.util.SortedSet;
 
 /**
  * @author Jason
@@ -25,12 +27,12 @@ public class FreeSpacedRepetitionSchedulerController implements FreeSpacedRepeti
     }
 
     @Override
-    public ServerResponseEntity<List<WordLearningResult>> addWordSchedule(long uid, List<String> word) {
+    public ServerResponseEntity<Set<WordLearningResult>> addWordSchedule(long uid, List<String> word) {
         return ServerResponseEntity.success(fsrsService.addWordSchedule(uid, word));
     }
 
     @Override
-    public ServerResponseEntity<List<WordLearningResult>> listLearningWords(long uid) {
-        return ServerResponseEntity.success(fsrsService.listWordsStage(uid));
+    public ServerResponseEntity<SortedSet<WordLearningResult>> listUserLearningWords(long uid) {
+        return ServerResponseEntity.success(fsrsService.listUserWordLearningResult(uid));
     }
 }

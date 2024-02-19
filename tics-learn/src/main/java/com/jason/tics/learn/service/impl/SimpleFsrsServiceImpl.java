@@ -1,5 +1,6 @@
 package com.jason.tics.learn.service.impl;
 
+import cn.hutool.core.date.DateUtil;
 import com.jason.tics.api.learn.domain.WordLearningResult;
 import com.jason.tics.api.learn.domain.WordStage;
 import com.jason.tics.learn.domain.Cards;
@@ -40,13 +41,13 @@ public class SimpleFsrsServiceImpl implements FsrsService {
      * @return 学习中的单词和对应学习阶段的映射
      */
     @Override
-    public List<WordLearningResult> listWordsStage(long uid) {
+    public SortedSet<WordLearningResult> listUserWordLearningResult(long uid) {
         List<WordFsrs> allByUid = wordFsrsRepository.findAllByUid(uid);
-        return getWordLearningResult(allByUid);
+        return doListWordLearningResult(allByUid);
     }
 
     @Override
-    public List<WordLearningResult> addWordSchedule(long uid, List<String> word) {
+    public Set<WordLearningResult> addWordSchedule(long uid, List<String> word) {
         Set<Cards> cardsSet = new HashSet<>();
         Set<Fsrs> fsrsSet = new HashSet<>();
         for (String s : word) {
@@ -58,7 +59,7 @@ public class SimpleFsrsServiceImpl implements FsrsService {
             fsrsSet.add(new Fsrs(card.getCardUuid()));
         }
         fsrsRepository.saveAllAndFlush(fsrsSet);
-        return getWordLearningResult(wordFsrsRepository.findAllByFront(word));
+        return doListWordLearningResult(wordFsrsRepository.findAllByFront(word));
     }
 
     @Override
@@ -86,9 +87,32 @@ public class SimpleFsrsServiceImpl implements FsrsService {
 
         Fsrs f = new Fsrs(fsrs.getCardUuid(), result);
         fsrsRepository.save(f);
-        return new WordLearningResult(fsrs.getCardUuid(), word, judgeStage(f));
+        return new WordLearningResult(fsrs.getCardUuid(), word, judgeStage(f), DateUtil.date(f.getNextRepetition()));
     }
 
+    @Override
+    public SortedSet<WordLearningResult> listDailyWords(long uid) {
+        List<WordFsrs> allByUid = wordFsrsRepository.findAllByUid(uid);
+        SortedSet<WordLearningResult> wordLearningResults = new TreeSet<>();
+        for (WordFsrs wordFsrs : allByUid) {
+            if (wordFsrs.getFsrs().getNextRepetition() < System.currentTimeMillis()) {
+                wordLearningResults.add(
+                        new WordLearningResult(
+                                wordFsrs.getCardUuid(),
+                                wordFsrs.getFront(),
+                                judgeStage(wordFsrs.getFsrs()),
+                                DateUtil.date(wordFsrs.getFsrs().getNextRepetition())
+                        )
+                );
+            }
+        }
+        return wordLearningResults;
+    }
+
+    /**
+     * 判断用户单词学习阶段
+     * @param fsrs 基于fsrs算法的单词学习信息
+     */
     private WordStage judgeStage(Fsrs fsrs){
         String state = fsrs.getState();
         if (state.equals(FSRSState.NEW.name()) || state.equals(FSRSState.LEARNING.name())) {
@@ -120,11 +144,17 @@ public class SimpleFsrsServiceImpl implements FsrsService {
         return WordStage.EXTREME;
     }
 
-    private List<WordLearningResult> getWordLearningResult(List<WordFsrs> wordFsrsList){
-        List<WordLearningResult> wordLearningResults = new ArrayList<>();
+    private SortedSet<WordLearningResult> doListWordLearningResult(List<WordFsrs> wordFsrsList){
+        SortedSet<WordLearningResult> wordLearningResults = new TreeSet<>();
         for (WordFsrs wordFsrs : wordFsrsList) {
-            wordLearningResults.add(new WordLearningResult(wordFsrs.getCardUuid(),
-                    wordFsrs.getFront(), judgeStage(wordFsrs.getFsrs())));
+            wordLearningResults.add(
+                    new WordLearningResult(
+                            wordFsrs.getCardUuid(),
+                            wordFsrs.getFront(),
+                            judgeStage(wordFsrs.getFsrs()),
+                            DateUtil.date(wordFsrs.getFsrs().getNextRepetition())
+                    )
+            );
         }
         return wordLearningResults;
     }
