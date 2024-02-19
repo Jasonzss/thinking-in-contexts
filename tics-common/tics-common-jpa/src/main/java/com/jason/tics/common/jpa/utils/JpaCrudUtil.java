@@ -18,7 +18,11 @@ import java.util.Set;
 /**
  * @author Jason
  */
-public class ResourceUtil {
+public class JpaCrudUtil {
+    /**
+     * 打上这些标签的属性无法被修改
+     * 不过这个功能可以在@Column注解中定义
+     */
     private static final Set<Class<? extends Annotation>> UNCHANGEABLE_ANNOTATIONS = new HashSet<>();
 
     static {
