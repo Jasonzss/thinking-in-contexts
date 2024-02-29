@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "serverUrl",
+      "type": "java.lang.String",
+      "description": "elasticsearch的端口信息."
+    },
+    {
+      "name": "apiKey",
+      "type": "java.lang.String",
+      "description": "elasticsearch的api秘钥."
+    }
+  ]
+}

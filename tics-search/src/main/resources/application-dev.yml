@@ -1,0 +1,10 @@
+serverUrl: http://localhost:9200 #开发环境关闭ssl
+apiKey: eE9WVHk0MEIzUGxUS0xvTmtkMjQ6RkRsZjhBaGpUN3V6dFRsYUd3UnVoQQ==
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:18848
+rocketmq:
+  name-server: localhost:9876
