@@ -1,6 +1,5 @@
 package com.jason.tics.dictionary.domain.web;
 
-import com.jason.tics.common.jpa.validator.CrudGroup;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -8,7 +7,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +26,7 @@ public class WebDictionary {
     private String bannerImageUrl;
     private String themeLogoUrl;
     private String desc;
-    @NotNull(groups = CrudGroup.Insert.class)
+    @Column(updatable = false, nullable = false)
     private Long creatorId;
 
 

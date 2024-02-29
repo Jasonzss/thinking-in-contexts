@@ -3,8 +3,6 @@ server:
 
 spring:
   application:
-    name: tics-dictionary
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 127.0.0.1:18848
+    name: @artifactId@
+  profiles:
+    active: @profiles.active@

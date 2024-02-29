@@ -2,7 +2,6 @@ package com.jason.tics.dictionary.service.impl;
 
 import com.jason.tics.common.core.exception.ExceptionResponseEnum;
 import com.jason.tics.common.core.exception.TicsException;
-import com.jason.tics.common.jpa.validator.CrudGroup;
 import com.jason.tics.dictionary.domain.web.WebDictionary;
 import com.jason.tics.dictionary.domain.web.WebTranslation;
 import com.jason.tics.dictionary.repository.WebDictionaryRepository;
@@ -11,7 +10,6 @@ import com.jason.tics.dictionary.service.WebDictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
 
 /**
  * @author Jason
@@ -36,7 +34,7 @@ public class OfficialWebTranslationServiceImpl implements WebDictionaryService {
 
 
     @Override
-    public WebTranslation addWebTranslation(@Validated(CrudGroup.Insert.class) WebTranslation webTranslation) {
+    public WebTranslation addWebTranslation(WebTranslation webTranslation) {
         initOfficialWebDictionary();
         webTranslation.setTheme(OFFICIAL_THEME);
         if (webTranslation.getContributorId().equals(OFFICIAL_CREATOR_ID)) {

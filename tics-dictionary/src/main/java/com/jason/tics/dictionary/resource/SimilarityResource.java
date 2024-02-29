@@ -1,7 +1,6 @@
 package com.jason.tics.dictionary.resource;
 
 import com.jason.tics.common.core.response.ServerResponseEntity;
-import com.jason.tics.common.jpa.validator.CrudGroup;
 import com.jason.tics.dictionary.domain.extension.Similarity;
 import com.jason.tics.dictionary.repository.SimilarityRepository;
 import org.springframework.validation.annotation.Validated;
@@ -23,7 +22,7 @@ public class SimilarityResource {
     }
 
     @PostMapping
-    public ServerResponseEntity<Similarity> addSimilarity(@Validated({CrudGroup.Insert.class}) @RequestBody
+    public ServerResponseEntity<Similarity> addSimilarity(@Validated @RequestBody
                                                                       Similarity similarity){
         return ServerResponseEntity.success(similarityRepository.save(similarity));
     }
