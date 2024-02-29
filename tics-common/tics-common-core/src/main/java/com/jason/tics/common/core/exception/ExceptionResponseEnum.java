@@ -33,11 +33,15 @@ public enum ExceptionResponseEnum implements ServerResponse {
     INVALID_REQUEST_PARAM("5002", HttpStatus.HTTP_BAD_REQUEST, "非法请求参数"),
     SORT_PARAM_UN_SUPPORTED("5003", HttpStatus.HTTP_BAD_REQUEST, "不支持的排序参数"),
 
+
     /**
      * 内部开发代码有误
      */
     INTERNAL_ERROR("6001", HttpStatus.HTTP_INTERNAL_ERROR, "网站发生了错误"),
-
+    /**
+     * rocketMq错误
+     */
+    INVALID_PAYLOAD("6002", HttpStatus.HTTP_INTERNAL_ERROR, "无效的payload消息发送"),
 
     DEVELOPMENT_IN_PROGRESS("7001", HttpStatus.HTTP_INTERNAL_ERROR, "此功能开发中"),
 
