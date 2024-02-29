@@ -13,7 +13,7 @@ public interface EssayPostService {
 
     EssayPost updateEssayCover(String id, String cover);
 
-    EssayPost addEssay(EssayPostDto essayPostDto);
+    EssayPost addEssay(EssayPostDto essayPostDto, long uid);
 
     void deleteEssay(String id);
 }

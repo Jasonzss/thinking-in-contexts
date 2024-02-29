@@ -1,23 +1,28 @@
 package com.jason.tics.content.domain;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
+
+import java.util.Date;
 
 /**
  * @author Jason
  */
-@Getter
-@Setter
-@ToString
+@Data
 @TableName("audio_text")
 public class AudioText {
     @TableId
     private Long audioTextId;
     private String audioId;
     private String audioTextUrl;
+
+    @TableField(fill = FieldFill.INSERT)
+    private Date createTime;
+    @TableField(fill = FieldFill.UPDATE)
+    private Date updateTime;
 
     public AudioText() {
     }

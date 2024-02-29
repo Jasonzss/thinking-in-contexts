@@ -2,18 +2,16 @@ package com.jason.tics.content.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateUtil;
-import cn.hutool.core.map.MapUtil;
+import com.jason.tics.api.content.bo.AudioPostBo;
+import com.jason.tics.common.rocketmq.annotation.SendMessage;
+import com.jason.tics.common.rocketmq.aop.PayloadSource;
+import com.jason.tics.common.rocketmq.constant.RocketMqConstant;
 import com.jason.tics.content.domain.AudioPost;
-import com.jason.tics.content.domain.Tag;
 import com.jason.tics.content.domain.dto.AudioPostDto;
 import com.jason.tics.content.mapper.AudioPostMapper;
-import com.jason.tics.content.mapper.TagMapper;
 import com.jason.tics.content.service.AudioPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author Jason
@@ -22,18 +20,13 @@ import java.util.stream.Collectors;
 public class AudioPostServiceImpl implements AudioPostService {
     @Autowired
     private AudioPostMapper audioPostMapper;
-    @Autowired
-    private TagMapper tagMapper;
 
     @Override
     public AudioPost getAudioPost(String audioId) {
-        AudioPost audioPost = audioPostMapper.selectById(audioId);
-        List<Tag> tags = tagMapper.selectByMap(MapUtil.of("id", audioId));
-        List<String> tagList = tags.stream().map(Tag::getTagName).collect(Collectors.toList());
-        audioPost.setTags(tagList);
-        return audioPost;
+        return audioPostMapper.selectById(audioId);
     }
 
+    @SendMessage(topic = RocketMqConstant.CONTENT_AUDIO_UPSERT_TOPIC, targetPojo = AudioPostBo.class)
     @Override
     public AudioPost addAudioPost(AudioPostDto audioPostDto, long uid) {
         AudioPost audioPost = BeanUtil.copyProperties(audioPostDto, AudioPost.class);
@@ -43,11 +36,13 @@ public class AudioPostServiceImpl implements AudioPostService {
         return audioPost;
     }
 
+    @SendMessage(topic = RocketMqConstant.CONTENT_AUDIO_DELETE_TOPIC, source = PayloadSource.PARAM)
     @Override
     public void deleteAudioPost(String audioId) {
         audioPostMapper.deleteById(audioId);
     }
 
+    @SendMessage(topic = RocketMqConstant.CONTENT_AUDIO_UPSERT_TOPIC, targetPojo = AudioPostBo.class)
     @Override
     public AudioPost updateTitle(String audioId, String newTitle) {
         AudioPost audioPost = new AudioPost();
@@ -57,6 +52,7 @@ public class AudioPostServiceImpl implements AudioPostService {
         return audioPost;
     }
 
+    @SendMessage(topic = RocketMqConstant.CONTENT_AUDIO_UPSERT_TOPIC, targetPojo = AudioPostBo.class)
     @Override
     public AudioPost updateIntroduction(String audioId, String newIntroduction) {
         AudioPost audioPost = new AudioPost();
@@ -66,6 +62,7 @@ public class AudioPostServiceImpl implements AudioPostService {
         return audioPost;
     }
 
+    @SendMessage(topic = RocketMqConstant.CONTENT_AUDIO_UPSERT_TOPIC, targetPojo = AudioPostBo.class)
     @Override
     public AudioPost updateCoverImage(String audioId, String newCoverImage) {
         AudioPost audioPost = new AudioPost();
@@ -75,6 +72,7 @@ public class AudioPostServiceImpl implements AudioPostService {
         return audioPost;
     }
 
+    @SendMessage(topic = RocketMqConstant.CONTENT_AUDIO_UPSERT_TOPIC, targetPojo = AudioPostBo.class)
     @Override
     public AudioPost updateAudio(String audioId, String audio) {
         AudioPost audioPost = new AudioPost();

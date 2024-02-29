@@ -16,13 +16,13 @@ import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest(classes = ContentApplication.class)
 @Transactional
 @Slf4j
-public class AudioPostMapperTest {
+public class AudioPostBoMapperTest {
     @Autowired
     private AudioPostMapper audioPostMapper;
 
     @Test
     public void testSelectById(){
-        log.info("查找Audio__"+audioPostMapper.selectById(1));
+        log.info("查找Audio__"+audioPostMapper.selectById("a1"));
     }
 
     @Test

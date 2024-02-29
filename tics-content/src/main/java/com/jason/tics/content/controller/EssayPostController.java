@@ -1,5 +1,6 @@
 package com.jason.tics.content.controller;
 
+import com.jason.tics.common.security.annotation.Uid;
 import com.jason.tics.content.domain.EssayPost;
 import com.jason.tics.content.domain.dto.EssayPostDto;
 import com.jason.tics.content.service.EssayPostService;
@@ -19,15 +20,15 @@ public class EssayPostController {
     }
 
     @PostMapping
-    public EssayPost addEssay(@Validated @RequestBody EssayPostDto essayPostDto){
-        return essayPostService.addEssay(essayPostDto);
+    public EssayPost addEssay(@Validated @RequestBody EssayPostDto essayPostDto, @Uid long uid){
+        return essayPostService.addEssay(essayPostDto, uid);
     }
 
     @PutMapping("/{id}")
     public EssayPost updateEssay(@PathVariable String id, String essay){
         EssayPost essayPost = new EssayPost();
         essayPost.setEssayId(id);
-        essayPost.setEssay(essay);
+        essayPost.setEssayUrl(essay);
         return essayPostService.updateEssay(essayPost);
     }
 

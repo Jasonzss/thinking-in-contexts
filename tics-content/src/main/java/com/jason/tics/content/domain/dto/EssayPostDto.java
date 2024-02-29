@@ -4,7 +4,6 @@ import com.jason.tics.content.domain.EssayPost;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author Jason
@@ -13,16 +12,14 @@ import org.springframework.web.multipart.MultipartFile;
 @Setter
 @ToString
 public class EssayPostDto {
-    private Long uid;
     private String title;
     private String essayUrl;
     private String coverImageUrl;
 
     public EssayPost getEssayPost(){
         EssayPost essayPost = new EssayPost();
-        essayPost.setAuthorId(uid);
         essayPost.setTitle(title);
-        essayPost.setEssay(essayUrl);
+        essayPost.setEssayUrl(essayUrl);
         essayPost.setCoverImageUrl(coverImageUrl);
         return essayPost;
     }

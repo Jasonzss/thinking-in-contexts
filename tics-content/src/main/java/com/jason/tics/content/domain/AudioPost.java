@@ -1,20 +1,15 @@
 package com.jason.tics.content.domain;
 
 import com.baomidou.mybatisplus.annotation.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * @author Jason
  * @since 2023/09/13 - 15:01
  */
-@Getter
-@Setter
-@ToString
+@Data
 @TableName("audio")
 public class AudioPost {
     private String audioUrl;
@@ -33,8 +28,5 @@ public class AudioPost {
     private String audioId;
     private Long authorId;
     private String title;
-    private Long quantityOfViews;
-
-    @TableField(exist = false)
-    private List<String> tags;
+    private Long quantityOfViews = 0L;
 }

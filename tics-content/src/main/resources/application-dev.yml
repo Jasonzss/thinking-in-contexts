@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tics_content?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:18848
+
+rocketmq:
+  name-server: localhost:9876

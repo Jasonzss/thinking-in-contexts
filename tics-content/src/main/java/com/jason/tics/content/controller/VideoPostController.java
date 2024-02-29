@@ -1,8 +1,9 @@
 package com.jason.tics.content.controller;
 
+import com.jason.tics.common.security.annotation.Uid;
+import com.jason.tics.content.domain.VideoPost;
 import com.jason.tics.content.domain.VideoSubtitle;
 import com.jason.tics.content.domain.dto.VideoPostDto;
-import com.jason.tics.content.domain.VideoPost;
 import com.jason.tics.content.service.VideoPostService;
 import com.jason.tics.content.service.VideoSubtitleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,8 @@ public class VideoPostController {
     }
 
     @PostMapping
-    public VideoPost addVideo(@RequestBody @Validated VideoPostDto videoPostDto){
-        return videoPostService.addVideo(videoPostDto);
+    public VideoPost addVideo(@RequestBody @Validated VideoPostDto videoPostDto, @Uid long uid){
+        return videoPostService.addVideo(videoPostDto, uid);
     }
 
     @PutMapping("/{id}")

@@ -2,6 +2,7 @@ package com.jason.tics.content.domain;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -14,9 +15,12 @@ import java.util.Date;
 @Data
 @TableName("collection")
 public class Collection {
+    @TableId
+    private Long collectionId;
     private Long uid;
     private String contentId;
     private Long collectionsId;
+
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;
     @TableField(fill = FieldFill.UPDATE)

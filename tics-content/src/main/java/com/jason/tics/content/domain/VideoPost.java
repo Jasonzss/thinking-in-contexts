@@ -6,7 +6,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * @author Jason
@@ -33,7 +32,6 @@ public class VideoPost {
     private String videoId;
     private Long authorId;
     private String title;
-    private Long quantityOfViews;
-    @TableField(exist = false)
-    private List<String> tags;
+    //TODO 三个浏览量要单独移到一个表中
+    private Long quantityOfViews = 0L;
 }

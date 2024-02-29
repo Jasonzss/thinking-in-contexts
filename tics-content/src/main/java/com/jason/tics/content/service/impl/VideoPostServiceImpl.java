@@ -1,17 +1,16 @@
 package com.jason.tics.content.service.impl;
 
-import cn.hutool.core.map.MapUtil;
-import com.jason.tics.content.domain.Tag;
+import cn.hutool.core.bean.BeanUtil;
+import com.jason.tics.api.content.bo.VideoPostBo;
+import com.jason.tics.common.rocketmq.annotation.SendMessage;
+import com.jason.tics.common.rocketmq.aop.PayloadSource;
+import com.jason.tics.common.rocketmq.constant.RocketMqConstant;
 import com.jason.tics.content.domain.VideoPost;
 import com.jason.tics.content.domain.dto.VideoPostDto;
-import com.jason.tics.content.mapper.TagMapper;
 import com.jason.tics.content.mapper.VideoPostMapper;
 import com.jason.tics.content.service.VideoPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author Jason
@@ -20,35 +19,22 @@ import java.util.stream.Collectors;
 public class VideoPostServiceImpl implements VideoPostService {
     @Autowired
     private VideoPostMapper videoPostMapper;
-    @Autowired
-    private TagMapper tagMapper;
 
     @Override
     public VideoPost getVideo(String id) {
-        VideoPost videoPost = videoPostMapper.selectById(id);
-        List<Tag> tags = tagMapper.selectByMap(MapUtil.of("id", id));
-        List<String> tagList = tags.stream().map(Tag::getTagName).collect(Collectors.toList());
-        videoPost.setTags(tagList);
-        return videoPost;
+        return videoPostMapper.selectById(id);
     }
 
+    @SendMessage(topic = RocketMqConstant.CONTENT_VIDEO_UPSERT_TOPIC, targetPojo = VideoPostBo.class)
     @Override
-    public VideoPost addVideo(VideoPostDto videoPostDto) {
-        VideoPost videoPost = new VideoPost();
-        videoPost.setAuthorId(videoPostDto.getUid());
-        videoPost.setTitle(videoPostDto.getTitle());
-        videoPost.setVideoUrl(videoPostDto.getVideo());
-        videoPost.setCoverImageUrl(videoPostDto.getCoverImage());
-        videoPost.setIntroduction(videoPostDto.getIntroduction());
+    public VideoPost addVideo(VideoPostDto videoPostDto, long uid) {
+        VideoPost videoPost = BeanUtil.copyProperties(videoPostDto, VideoPost.class);
+        videoPost.setAuthorId(uid);
         videoPostMapper.insert(videoPost);
-        List<Tag> tags = videoPostDto.getTags(videoPost.getVideoId());
-        for (Tag tag : tags){
-            tagMapper.insert(tag);
-        }
-        videoPost.setTags(videoPost.getTags());
         return videoPost;
     }
 
+    @SendMessage(topic = RocketMqConstant.CONTENT_VIDEO_UPSERT_TOPIC, targetPojo = VideoPostBo.class)
     @Override
     public VideoPost updateVideo(String id, String file) {
         VideoPost videoPost = new VideoPost();
@@ -58,6 +44,7 @@ public class VideoPostServiceImpl implements VideoPostService {
         return videoPost;
     }
 
+    @SendMessage(topic = RocketMqConstant.CONTENT_VIDEO_UPSERT_TOPIC, targetPojo = VideoPostBo.class)
     @Override
     public VideoPost updateTitle(String id, String title) {
         VideoPost videoPost = new VideoPost();
@@ -67,6 +54,7 @@ public class VideoPostServiceImpl implements VideoPostService {
         return videoPost;
     }
 
+    @SendMessage(topic = RocketMqConstant.CONTENT_VIDEO_UPSERT_TOPIC, targetPojo = VideoPostBo.class)
     @Override
     public VideoPost updateIntroduction(String id, String introduction) {
         VideoPost videoPost = new VideoPost();
@@ -76,6 +64,7 @@ public class VideoPostServiceImpl implements VideoPostService {
         return videoPost;
     }
 
+    @SendMessage(topic = RocketMqConstant.CONTENT_VIDEO_UPSERT_TOPIC, targetPojo = VideoPostBo.class)
     @Override
     public VideoPost updateCoverImage(String id, String cover) {
         VideoPost videoPost = new VideoPost();
@@ -85,6 +74,7 @@ public class VideoPostServiceImpl implements VideoPostService {
         return videoPost;
     }
 
+    @SendMessage(topic = RocketMqConstant.CONTENT_VIDEO_DELETE_TOPIC, source = PayloadSource.PARAM)
     @Override
     public void deleteVideo(String id) {
         videoPostMapper.deleteById(id);

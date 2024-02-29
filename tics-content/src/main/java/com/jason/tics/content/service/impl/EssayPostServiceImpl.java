@@ -1,6 +1,9 @@
 package com.jason.tics.content.service.impl;
 
-import cn.hutool.core.date.DateUtil;
+import com.jason.tics.api.content.bo.EssayPostBo;
+import com.jason.tics.common.rocketmq.annotation.SendMessage;
+import com.jason.tics.common.rocketmq.aop.PayloadSource;
+import com.jason.tics.common.rocketmq.constant.RocketMqConstant;
 import com.jason.tics.content.domain.EssayPost;
 import com.jason.tics.content.domain.dto.EssayPostDto;
 import com.jason.tics.content.mapper.EssayPostMapper;
@@ -21,12 +24,14 @@ public class EssayPostServiceImpl implements EssayPostService {
         return essayPostMapper.selectById(id);
     }
 
+    @SendMessage(topic = RocketMqConstant.CONTENT_ESSAY_UPSERT_TOPIC, targetPojo = EssayPostBo.class)
     @Override
     public EssayPost updateEssay(EssayPost essayPost) {
         essayPostMapper.updateById(essayPost);
         return essayPost;
     }
 
+    @SendMessage(topic = RocketMqConstant.CONTENT_ESSAY_UPSERT_TOPIC, targetPojo = EssayPostBo.class)
     @Override
     public EssayPost updateEssayCover(String id, String cover) {
         EssayPost essayPost = new EssayPost();
@@ -36,14 +41,16 @@ public class EssayPostServiceImpl implements EssayPostService {
         return essayPost;
     }
 
+    @SendMessage(topic = RocketMqConstant.CONTENT_ESSAY_UPSERT_TOPIC, targetPojo = EssayPostBo.class)
     @Override
-    public EssayPost addEssay(EssayPostDto essayPostDto) {
+    public EssayPost addEssay(EssayPostDto essayPostDto, long uid) {
         EssayPost essayPost = essayPostDto.getEssayPost();
-        essayPost.setCreateTime(DateUtil.date());
+        essayPost.setAuthorId(uid);
         essayPostMapper.insert(essayPost);
         return essayPost;
     }
 
+    @SendMessage(topic = RocketMqConstant.CONTENT_ESSAY_DELETE_TOPIC, source = PayloadSource.PARAM)
     @Override
     public void deleteEssay(String id) {
         essayPostMapper.deleteById(id);

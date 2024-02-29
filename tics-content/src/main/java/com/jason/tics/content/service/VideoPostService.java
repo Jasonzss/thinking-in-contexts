@@ -1,9 +1,7 @@
 package com.jason.tics.content.service;
 
-import cn.hutool.db.PageResult;
 import com.jason.tics.content.domain.VideoPost;
 import com.jason.tics.content.domain.dto.VideoPostDto;
-import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author Jason
@@ -13,7 +11,7 @@ public interface VideoPostService {
 
     // 增删改
 
-    VideoPost addVideo(VideoPostDto videoPostDto);
+    VideoPost addVideo(VideoPostDto videoPostDto, long uid);
 
     VideoPost updateVideo(String id, String file);
 
