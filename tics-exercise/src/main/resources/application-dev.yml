@@ -13,5 +13,9 @@ spring:
   cache:
     redis:
       cache-null-values: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:18848
 rocketmq:
   name-server: localhost:9876
