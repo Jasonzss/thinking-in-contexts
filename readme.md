@@ -16,8 +16,8 @@
          2. 登陆失败
       2. 验权功能
 7. content：内容的定义和增删改查的服务，按媒体类型分为短文、长文、书籍、视频、歌曲等
-8. dictionnary：词句翻译的扩展服务，包括单词评论、单词相关资料索引、相似单词匹配等
-9. execise：做练习题
+8. dictionary：词句翻译的扩展服务，包括单词评论、单词相关资料索引、相似单词匹配等
+9. exercise：做练习题
 10. file：文件存取服务
 11. gateway：网关，对外提供统一的服务
 12. learn：纪录用户学习的深度和广度，对单词的学习程度，针对性出单词学习
@@ -40,6 +40,8 @@
 
 1. nacos：18848
 2. elasticsearch：9200、9300
+   1. 账号：elastic
+   2. 密码：MuXpvrPmRF2TJ00W5uQ+
 3. kibana：5601
 4. rocketMqNameServer：9876
 5. rocketMqBroker：10909、10911
@@ -50,6 +52,7 @@
 1. tics-translation：18001
 2. tics-gateway:18011
 3. tics-file:18002
+4. tics-search:19200
 
 ### 测试
 
