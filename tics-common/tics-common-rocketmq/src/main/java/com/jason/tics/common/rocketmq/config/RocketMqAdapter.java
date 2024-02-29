@@ -5,17 +5,19 @@ import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.messaging.converter.MappingJackson2MessageConverter;
 
 /**
  * @author Jason
  */
 @Configuration
+@EnableAspectJAutoProxy
 public class RocketMqAdapter {
 //    @Autowired
 //    private RocketMQMessageConverter rocketMqMessageConverter;
 
-    @Value("${rocketmq.name-server}")
+    @Value("${rocketmq.name-server:}")
     private String nameServer;
 
     public RocketMQTemplate getTemplateByTopicName(String topic){
