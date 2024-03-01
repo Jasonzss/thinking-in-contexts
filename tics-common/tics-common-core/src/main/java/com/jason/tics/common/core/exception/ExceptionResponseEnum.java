@@ -42,6 +42,7 @@ public enum ExceptionResponseEnum implements ServerResponse {
      * rocketMq错误
      */
     INVALID_PAYLOAD("6002", HttpStatus.HTTP_INTERNAL_ERROR, "无效的payload消息发送"),
+    ELASTICSEARCH_BROKEN_DOWN("6003", HttpStatus.HTTP_INTERNAL_ERROR, "elasticsearch故障"),
 
     DEVELOPMENT_IN_PROGRESS("7001", HttpStatus.HTTP_INTERNAL_ERROR, "此功能开发中"),
 
