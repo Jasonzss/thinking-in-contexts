@@ -10,6 +10,11 @@ public class RocketMqConstant {
      */
     public static long TIMEOUT = 3000;
 
+    /**
+     * 测试topic
+     */
+    public static final String TEST_TOPIC = "test-topic";
+
 
     /**
      * 用户行为topic

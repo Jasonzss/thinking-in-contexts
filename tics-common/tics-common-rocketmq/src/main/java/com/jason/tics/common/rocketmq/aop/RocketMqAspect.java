@@ -109,17 +109,18 @@ public class RocketMqAspect implements ApplicationContextAware, InitializingBean
         if (annotation.synchronous()){
             //同步发送
             template.syncSend(annotation.topic(), MessageBuilder.withPayload(payload).build(), RocketMqConstant.TIMEOUT);
+            log.info("RocketMqAspect syncSend {} message success", annotation.topic());
         }else {
             //异步发送
             template.asyncSend(annotation.topic(), MessageBuilder.withPayload(payload).build(), new SendCallback() {
                 @Override
                 public void onSuccess(SendResult sendResult) {
-                    log.info("RocketMqAspect send {} message success", annotation.topic());
+                    log.info("RocketMqAspect asyncSend {} message success", annotation.topic());
                 }
 
                 @Override
                 public void onException(Throwable e) {
-                    throw new TicsException("RocketMqAspect send "+annotation.topic()+" message failed", e);
+                    throw new TicsException("RocketMqAspect asyncSend "+annotation.topic()+" message failed", e);
                 }
             }, RocketMqConstant.TIMEOUT);
         }
