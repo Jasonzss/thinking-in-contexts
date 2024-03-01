@@ -3,8 +3,6 @@ package com.jason.tics.search.component.listener;
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.elasticsearch._types.Result;
 import co.elastic.clients.elasticsearch.core.DeleteResponse;
-import com.jason.tics.common.core.exception.ExceptionResponseEnum;
-import com.jason.tics.common.core.exception.TicsException;
 import com.jason.tics.common.rocketmq.constant.RocketMqConstant;
 import com.jason.tics.search.constant.EsConstant;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +30,6 @@ public class VideoContentDeleteConsumer implements RocketMQListener<String> {
             DeleteResponse delete = esClient.delete(builder -> builder.index(EsConstant.VIDEO_INDEX).id(message));
             if (delete.result().equals(Result.NotFound)) {
                 log.warn("deleted video [{}] doesn't exist", message);
-                throw new TicsException(ExceptionResponseEnum.SHOW_FAIL.setMsg("video does not exist, stop deleting"));
             }else {
                 log.info("video [{}] had been deleted", message);
             }

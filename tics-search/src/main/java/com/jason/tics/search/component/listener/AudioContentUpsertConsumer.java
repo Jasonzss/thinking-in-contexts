@@ -34,7 +34,7 @@ public class AudioContentUpsertConsumer implements RocketMQListener<AudioPostBo>
                     //如果要修改的文档不存在则新插入
                     .docAsUpsert(true), AudioPostBo.class);
 
-            log.info("uploaded audio info saved in elasticsearch successfully, audio id {}", response.result());
+            log.info("uploaded audio info saved in elasticsearch successfully, audio {} created. {}", message.getAudioId(), response);
         } catch (IOException e) {
             log.error("elasticsearch upsert failed", e);
         }

@@ -34,7 +34,7 @@ public class EssayContentUpsertConsumer implements RocketMQListener<EssayPostBo>
                     //如果要修改的文档不存在则新插入
                     .docAsUpsert(true), EssayPostBo.class);
 
-            log.info("uploaded essay info saved in elasticsearch successfully, essay id {}", response.result());
+            log.info("uploaded essay info saved in elasticsearch successfully, essay {} created. {}", message.getEssayId(), response);
         } catch (IOException e) {
             log.error("elasticsearch upsert failed", e);
         }

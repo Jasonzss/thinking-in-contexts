@@ -28,6 +28,7 @@ public class EsConstant {
     public static final String VIDEO_INDEX = "video-index";
     public static final String VIDEO_URL = "videoUrl";
     public static final String VIDEO_ID = "videoId";
+    public static final String VIDEO_SUBTITLE = "videoSubtitle";
 
 
     /**
@@ -36,6 +37,7 @@ public class EsConstant {
     public static final String AUDIO_INDEX = "audio-index";
     public static final String AUDIO_URL = "audioUrl";
     public static final String AUDIO_ID = "audioId";
+    public static final String AUDIO_TEXT = "audioText";
 
     /**
      * essay相关
@@ -43,6 +45,7 @@ public class EsConstant {
     public static final String ESSAY_INDEX = "essay-index";
     public static final String ESSAY_URL = "essayUrl";
     public static final String ESSAY_ID = "essayId";
+    public static final String ESSAY = "essay";
 
     public static final String CREATE_TIME = "createTime";
     public static final String UPDATE_TIME =  "updateTime";

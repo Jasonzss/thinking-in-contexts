@@ -34,7 +34,7 @@ public class VideoContentUpsertConsumer implements RocketMQListener<VideoPostBo>
                     //如果要修改的文档不存在则新插入
                     .docAsUpsert(true), VideoPostBo.class);
 
-            log.info("uploaded video info saved in elasticsearch successfully, video id {}", response.result());
+            log.info("uploaded video info saved in elasticsearch successfully, video {} created. {}", message.getVideoId(), response);
         } catch (IOException e) {
             log.error("elasticsearch upsert failed", e);
         }
