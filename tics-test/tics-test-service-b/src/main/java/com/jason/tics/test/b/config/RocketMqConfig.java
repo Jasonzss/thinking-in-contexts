@@ -18,7 +18,7 @@ public class RocketMqConfig {
 
     @Lazy
     @Bean(destroyMethod = "destroy")
-    public RocketMQTemplate userLikeMqTemplate(){
-        return rocketMqAdapter.getTemplateByTopicName(RocketMqConstant.USER_LIKE_TOPIC);
+    public RocketMQTemplate testMqTemplate(){
+        return rocketMqAdapter.getTemplateByTopicName(RocketMqConstant.TEST_TOPIC);
     }
 }

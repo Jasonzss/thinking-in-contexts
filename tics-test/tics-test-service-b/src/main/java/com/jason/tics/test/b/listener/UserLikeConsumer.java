@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
  * @author Jason
  */
 @Component
-@RocketMQMessageListener(topic = RocketMqConstant.USER_LIKE_TOPIC,
-        consumerGroup = RocketMqConstant.USER_LIKE_TOPIC)
+@RocketMQMessageListener(topic = RocketMqConstant.TEST_TOPIC,
+        consumerGroup = RocketMqConstant.TEST_TOPIC)
 @Slf4j
 public class UserLikeConsumer implements RocketMQListener<Pair<Long, String>> {
     @Override
