@@ -17,6 +17,7 @@
         <module>tics-api-learn</module>
         <module>tics_api_recommend</module>
         <module>tics-api-content</module>
+        <module>tics-api-search</module>
     </modules>
 
     <properties>
