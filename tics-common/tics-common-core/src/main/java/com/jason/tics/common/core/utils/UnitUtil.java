@@ -1,8 +1,8 @@
 package com.jason.tics.common.core.utils;
 
+import org.apache.commons.lang3.math.Fraction;
+
 import java.lang.reflect.Array;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.*;
 
 /**
@@ -17,9 +17,9 @@ public class UnitUtil {
      * @param value    - 原始数值
      * @param original - 原始单位
      * @param need     - 转换的单位
-     * @return BigDecimal - 转换后的值
+     * @return Fraction - 转换后的值
      */
-    public static BigDecimal conversion(BigDecimal value, String original, String need) {
+    public static Fraction conversion(Fraction value, String original, String need) {
         return conversion(value, getUnit(original), getUnit(need));
     }
 
@@ -30,9 +30,9 @@ public class UnitUtil {
      * @param original - 原始单位
      * @param need     - 转换的单位
      * @param scale    - 小数点位数
-     * @return BigDecimal - 转换后的值
+     * @return Fraction - 转换后的值
      */
-    public static BigDecimal conversion(BigDecimal value, String original, String need, final Integer scale) {
+    public static Fraction conversion(Fraction value, String original, String need, final Integer scale) {
         return conversion(value, getUnit(original), getUnit(need), scale);
     }
 
@@ -42,9 +42,9 @@ public class UnitUtil {
      * @param value    - 原始数值
      * @param original - 原始单位
      * @param need     - 转换的单位
-     * @return BigDecimal - 转换后的值
+     * @return Fraction - 转换后的值
      */
-    public static BigDecimal conversion(final BigDecimal value, final Unit original, final Unit need) {
+    public static Fraction conversion(final Fraction value, final Unit original, final Unit need) {
         String needString = need.rate.toString();
         int scale = 2;
         if (needString.indexOf('.') > 0) {
@@ -60,16 +60,16 @@ public class UnitUtil {
      * @param original - 原始单位
      * @param need     - 转换的单位
      * @param scale    - 小数点位数
-     * @return BigDecimal - 数值
+     * @return Fraction - 数值
      */
-    public static BigDecimal conversion(final BigDecimal value, final Unit original, final Unit need, final Integer scale) {
+    public static Fraction conversion(final Fraction value, final Unit original, final Unit need, final Integer scale) {
         if (original == Unit.UN_KNOWN || need == Unit.UN_KNOWN) {
             throw new IllegalArgumentException("存在不支持的计量单位参数");
         }
         if (original.category != need.category) {
             throw new IllegalArgumentException(String.format("转换计量单位不统一 %s 不能转换为 %s ", original.category.name, need.category.name));
         }
-        return value == null ? new BigDecimal(0) : value.multiply(need.rate).divide(original.rate, scale, RoundingMode.HALF_UP);
+        return value == null ? Fraction.getFraction(0) : value.multiplyBy(need.rate);
     }
 
     /**
@@ -139,77 +139,83 @@ public class UnitUtil {
         /**
          * 长度计量单位
          */
-        LG_KM(CategoryEnum.LENGTH, "km", new String[]{"km", "千米"}, new BigDecimal("0.001"), "千米"),
-        LG_M(CategoryEnum.LENGTH, "m", new String[]{"m", "米"}, new BigDecimal("1"), "米"),
-        LG_DM(CategoryEnum.LENGTH, "dm", new String[]{"dm", "分米"}, new BigDecimal("10"), "分米"),
-        LG_CM(CategoryEnum.LENGTH, "cm", new String[]{"cm", "厘米"}, new BigDecimal("100"), "厘米"),
-        LG_MM(CategoryEnum.LENGTH, "mm", new String[]{"mm", "毫米"}, new BigDecimal("1000"), "毫米"),
-        LG_UM(CategoryEnum.LENGTH, "um", new String[]{"um", "微米"}, new BigDecimal("1000000"), "微米"),
-        LG_NM(CategoryEnum.LENGTH, "nm", new String[]{"nm", "纳米"}, new BigDecimal("1000000000"), "纳米"),
-        LG_INCH(CategoryEnum.LENGTH, "in", new String[]{"in", "inch", "英寸"}, new BigDecimal("39.3700787"), "英寸"),
-        LG_FOOT(CategoryEnum.LENGTH, "ft", new String[]{"ft", "foot", "英尺"}, new BigDecimal("3.2808399"), "英尺"),
-        LG_MILES(CategoryEnum.LENGTH, "mi", new String[]{"mi", "miles", "英里"}, new BigDecimal("0.00062137"), "英里"),
-        LG_NAUTICAL_MILE(CategoryEnum.LENGTH, "nmile", new String[]{"nmile", "nauticalmile", "海里"}, new BigDecimal("0.00053996"), "海里"),
+        LG_KM(CategoryEnum.LENGTH, "km", new String[]{"km", "千米"}, Fraction.getFraction("0.001"), "千米"),
+        LG_M(CategoryEnum.LENGTH, "m", new String[]{"m", "米"}, Fraction.getFraction("1"), "米"),
+        LG_DM(CategoryEnum.LENGTH, "dm", new String[]{"dm", "分米"}, Fraction.getFraction("10"), "分米"),
+        LG_CM(CategoryEnum.LENGTH, "cm", new String[]{"cm", "厘米"}, Fraction.getFraction("100"), "厘米"),
+        LG_MM(CategoryEnum.LENGTH, "mm", new String[]{"mm", "毫米"}, Fraction.getFraction("1000"), "毫米"),
+        LG_UM(CategoryEnum.LENGTH, "um", new String[]{"um", "微米"}, Fraction.getFraction("1000000"), "微米"),
+        LG_NM(CategoryEnum.LENGTH, "nm", new String[]{"nm", "纳米"}, Fraction.getFraction("1000000000"), "纳米"),
+        LG_INCH(CategoryEnum.LENGTH, "in", new String[]{"in", "inch", "英寸"}, Fraction.getFraction("39.3700787"), "英寸"),
+        LG_FOOT(CategoryEnum.LENGTH, "ft", new String[]{"ft", "foot", "英尺"}, Fraction.getFraction("3.2808399"), "英尺"),
+        LG_MILES(CategoryEnum.LENGTH, "mi", new String[]{"mi", "miles", "英里"}, Fraction.getFraction("0.00062137"), "英里"),
+        LG_NAUTICAL_MILE(CategoryEnum.LENGTH, "nmile", new String[]{"nmile", "nauticalmile", "海里"}, Fraction.getFraction("0.00053996"), "海里"),
 
         /**
          * 质量计量单位
          */
-        EG_T(CategoryEnum.WEIGHT, "t", new String[]{"t", "吨"}, new BigDecimal("0.001"), "吨"),
-        EG_KG(CategoryEnum.WEIGHT, "kg", new String[]{"kg", "千克"}, new BigDecimal("1"), "千克"),
-        EG_G(CategoryEnum.WEIGHT, "g", new String[]{"g", "克"}, new BigDecimal("1000"), "克"),
-        EG_MG(CategoryEnum.WEIGHT, "mg", new String[]{"mg", "毫克"}, new BigDecimal("1000000"), "毫克"),
-        EG_UG(CategoryEnum.WEIGHT, "μg", new String[]{"μg", "ug", "微克"}, new BigDecimal("1000000000"), "微克"),
-        EG_LB(CategoryEnum.WEIGHT, "lb", new String[]{"lb", "lbs", "磅"}, new BigDecimal("2.2046226"), "磅"),
-        EG_OZ(CategoryEnum.WEIGHT, "oz", new String[]{"oz", "盎司"}, new BigDecimal("35.2739619"), "盎司"),
-        EG_CT(CategoryEnum.WEIGHT, "ct", new String[]{"ct", "克拉"}, new BigDecimal("5000"), "克拉"),
+        EG_T(CategoryEnum.WEIGHT, "t", new String[]{"t", "吨"}, Fraction.getFraction("0.001"), "吨"),
+        EG_KG(CategoryEnum.WEIGHT, "kg", new String[]{"kg", "千克"}, Fraction.getFraction("1"), "千克"),
+        EG_G(CategoryEnum.WEIGHT, "g", new String[]{"g", "克"}, Fraction.getFraction("1000"), "克"),
+        EG_MG(CategoryEnum.WEIGHT, "mg", new String[]{"mg", "毫克"}, Fraction.getFraction("1000000"), "毫克"),
+        EG_UG(CategoryEnum.WEIGHT, "μg", new String[]{"μg", "ug", "微克"}, Fraction.getFraction("1000000000"), "微克"),
+        EG_LB(CategoryEnum.WEIGHT, "lb", new String[]{"lb", "lbs", "磅"}, Fraction.getFraction("2.2046226"), "磅"),
+        EG_OZ(CategoryEnum.WEIGHT, "oz", new String[]{"oz", "盎司"}, Fraction.getFraction("35.2739619"), "盎司"),
+        EG_CT(CategoryEnum.WEIGHT, "ct", new String[]{"ct", "克拉"}, Fraction.getFraction("5000"), "克拉"),
 
         /**
          * 温度计量单位
          */
-        TG_DEGREE_CELSIUS(CategoryEnum.TEMPERATURE, "°C", new String[]{"°C", "degreecelsius", "摄氏度"}, new BigDecimal("1"), "摄氏度"),
-        TG_FAHRENHEIT_SCALE(CategoryEnum.TEMPERATURE, "°F", new String[]{"°F", "fahrenheitscale", "华氏度"}, new BigDecimal("33.8"), "华氏度"),
+        TG_DEGREE_CELSIUS(CategoryEnum.TEMPERATURE, "°C", new String[]{"°C", "degreecelsius", "摄氏度"}, Fraction.getFraction("1"), "摄氏度"),
+        TG_FAHRENHEIT_SCALE(CategoryEnum.TEMPERATURE, "°F", new String[]{"°F", "fahrenheitscale", "华氏度"}, Fraction.getFraction("33.8"), "华氏度"),
 
         /**
          * 速度计量单位
          */
-        TS_KM(CategoryEnum.SPEED, "km/h", new String[]{"km/h", "公里/小时"}, new BigDecimal("1"), "公里/小时"),
-        TS_MILES(CategoryEnum.SPEED, "mi/h", new String[]{"mi/h", "英里/小时"}, new BigDecimal("0.62137119"), "英里/小时"),
-        TS_NAUTICAL_MILE(CategoryEnum.SPEED, "nmile/h", new String[]{"nmile/h", "海里/小时"}, new BigDecimal("0.5399568"), "海里/小时"),
-        TS_KNOT(CategoryEnum.SPEED, "knot", new String[]{"knot", "节"}, new BigDecimal("0.5399568"), "节"),
-        TS_MACH(CategoryEnum.SPEED, "mach", new String[]{"mach", "machnumber", "马赫"}, new BigDecimal("0.00080985"), "马赫"),
+        TS_KM(CategoryEnum.SPEED, "km/h", new String[]{"km/h", "公里/小时"}, Fraction.getFraction("1"), "公里/小时"),
+        TS_MILES(CategoryEnum.SPEED, "mi/h", new String[]{"mi/h", "英里/小时"}, Fraction.getFraction("0.62137119"), "英里/小时"),
+        TS_NAUTICAL_MILE(CategoryEnum.SPEED, "nmile/h", new String[]{"nmile/h", "海里/小时"}, Fraction.getFraction("0.5399568"), "海里/小时"),
+        TS_KNOT(CategoryEnum.SPEED, "knot", new String[]{"knot", "节"}, Fraction.getFraction("0.5399568"), "节"),
+        TS_MACH(CategoryEnum.SPEED, "mach", new String[]{"mach", "machnumber", "马赫"}, Fraction.getFraction("0.00080985"), "马赫"),
 
         /**
          * 体积摩尔浓度单位（化学中的一种通用浓度单位）
          */
-        MOL_M(CategoryEnum.MOLARITY, "mol/L", new String[]{"mol/L", "摩尔/升", "molar", "M"}, new BigDecimal("1"), "摩尔/升"),
-        MOL_MM(CategoryEnum.MOLARITY, "mmol/L", new String[]{"mmol/L", "毫摩尔/升", "mM"}, new BigDecimal("1000"), "毫摩尔/升"),
-        MOL_UM(CategoryEnum.MOLARITY, "μmol/L", new String[]{"μmol/L", "微摩尔/升", "μM"}, new BigDecimal("1000000"), "微摩尔/升"),
-        MOL_NM(CategoryEnum.MOLARITY, "nmol/L", new String[]{"nmol/L", "纳摩尔/升", "nM"}, new BigDecimal("1000000000"), "纳摩尔/升"),
-        MOL_PM(CategoryEnum.MOLARITY, "pmol/L", new String[]{"pmol/L", "皮摩尔/升", "pM"}, new BigDecimal("1000000000000"), "皮摩尔/升"),
-        MOL_FM(CategoryEnum.MOLARITY, "fmol/L", new String[]{"fmol/L", "飞摩尔/升", "fM"}, new BigDecimal("1000000000000000"), "飞摩尔/升"),
-        MOL_AM(CategoryEnum.MOLARITY, "amol/L", new String[]{"amol/L", "阿摩尔/升", "aM"}, new BigDecimal("1000000000000000000"), "阿摩尔/升"),
-        MOL_ZM(CategoryEnum.MOLARITY, "zmol/L", new String[]{"zmol/L", "介摩尔/升", "zM"}, new BigDecimal("1000000000000000000000"), "介摩尔/升"),
-        MOL_YM(CategoryEnum.MOLARITY, "ymol/L", new String[]{"ymol/L", "攸摩尔/升", "yM"}, new BigDecimal("1000000000000000000000000"), "攸摩尔/升"),
+        MOL_M(CategoryEnum.MOLARITY, "mol/L", new String[]{"mol/L", "摩尔/升", "molar", "M"}, Fraction.getFraction("1"), "摩尔/升"),
+        MOL_MM(CategoryEnum.MOLARITY, "mmol/L", new String[]{"mmol/L", "毫摩尔/升", "mM"}, Fraction.getFraction("1000"), "毫摩尔/升"),
+        MOL_UM(CategoryEnum.MOLARITY, "μmol/L", new String[]{"μmol/L", "微摩尔/升", "μM"}, Fraction.getFraction("1000000"), "微摩尔/升"),
+        MOL_NM(CategoryEnum.MOLARITY, "nmol/L", new String[]{"nmol/L", "纳摩尔/升", "nM"}, Fraction.getFraction("1000000000"), "纳摩尔/升"),
+        MOL_PM(CategoryEnum.MOLARITY, "pmol/L", new String[]{"pmol/L", "皮摩尔/升", "pM"}, Fraction.getFraction("1000000000000"), "皮摩尔/升"),
+        MOL_FM(CategoryEnum.MOLARITY, "fmol/L", new String[]{"fmol/L", "飞摩尔/升", "fM"}, Fraction.getFraction("1000000000000000"), "飞摩尔/升"),
+        MOL_AM(CategoryEnum.MOLARITY, "amol/L", new String[]{"amol/L", "阿摩尔/升", "aM"}, Fraction.getFraction("1000000000000000000"), "阿摩尔/升"),
+        MOL_ZM(CategoryEnum.MOLARITY, "zmol/L", new String[]{"zmol/L", "介摩尔/升", "zM"}, Fraction.getFraction("1000000000000000000000"), "介摩尔/升"),
+        MOL_YM(CategoryEnum.MOLARITY, "ymol/L", new String[]{"ymol/L", "攸摩尔/升", "yM"}, Fraction.getFraction("1000000000000000000000000"), "攸摩尔/升"),
 
         /**
          * 电流强度计量单位
          */
-        AMP_A(CategoryEnum.CURRENT, "A", new String[]{"A", "amp", "安", "安培"}, new BigDecimal("1"), "安"),
-        AMP_MA(CategoryEnum.CURRENT, "mA", new String[]{"mA", "毫安"}, new BigDecimal("1000"), "毫安"),
-        AMP_UA(CategoryEnum.CURRENT, "μA", new String[]{"μA", "微安"}, new BigDecimal("1000000"), "微安"),
+        AMP_A(CategoryEnum.CURRENT, "A", new String[]{"A", "amp", "安", "安培"}, Fraction.getFraction("1"), "安"),
+        AMP_MA(CategoryEnum.CURRENT, "mA", new String[]{"mA", "毫安"}, Fraction.getFraction("1000"), "毫安"),
+        AMP_UA(CategoryEnum.CURRENT, "μA", new String[]{"μA", "微安"}, Fraction.getFraction("1000000"), "微安"),
 
         /**
          * 电压强度计量单位
          */
-        VOL_V(CategoryEnum.VOLTAGE, "V", new String[]{"V", "伏", "伏特"}, new BigDecimal("1"), "伏"),
-        VOL_KV(CategoryEnum.VOLTAGE, "kV", new String[]{"kV", "千伏"}, new BigDecimal("0.001"), "千伏"),
-        VOL_MV(CategoryEnum.VOLTAGE, "mV", new String[]{"mV", "毫伏"}, new BigDecimal("1000"), "毫伏"),
-        VOL_UV(CategoryEnum.VOLTAGE, "μV", new String[]{"μV", "微伏"}, new BigDecimal("1000000"), "微伏"),
+        VOL_V(CategoryEnum.VOLTAGE, "V", new String[]{"V", "伏", "伏特"}, Fraction.getFraction("1"), "伏"),
+        VOL_KV(CategoryEnum.VOLTAGE, "kV", new String[]{"kV", "千伏"}, Fraction.getFraction("0.001"), "千伏"),
+        VOL_MV(CategoryEnum.VOLTAGE, "mV", new String[]{"mV", "毫伏"}, Fraction.getFraction("1000"), "毫伏"),
+        VOL_UV(CategoryEnum.VOLTAGE, "μV", new String[]{"μV", "微伏"}, Fraction.getFraction("1000000"), "微伏"),
+
+        TIME_S(CategoryEnum.TIME, "sec", new String[]{"sec", "s", "second", "秒"}, Fraction.getFraction("1"), "秒"),
+        TIME_MS(CategoryEnum.TIME, "ms", new String[]{"ms", "msec", "millisecond","毫秒"}, Fraction.getFraction("1000"), "毫秒"),
+        TIME_MIN(CategoryEnum.TIME, "min", new String[]{"min", "minute", "分", "分钟"}, Fraction.getFraction(1, 60), "分钟"),
+        TIME_HOUR(CategoryEnum.TIME, "hour", new String[]{"hour", "h", "时", "小时"}, Fraction.getFraction(1, 60*60), "小时"),
+        TIME_DAY(CategoryEnum.TIME, "day", new String[]{"day", "d", "天", "日"}, Fraction.getFraction(1, 60*60*24), "日"),
 
         /**
          * 未知
          */
-        UN_KNOWN(null, "未知", null, new BigDecimal("0"), "未知");
+        UN_KNOWN(null, "未知", null, Fraction.getFraction("0"), "未知");
 
         /**
          * 计量类别
@@ -226,13 +232,13 @@ public class UnitUtil {
         /**
          * 换算率
          */
-        private final BigDecimal rate;
+        private final Fraction rate;
         /**
          * 描述
          */
         private final String description;
 
-        Unit(CategoryEnum category, String units, String[] possibleNames, BigDecimal rate, String description) {
+        Unit(CategoryEnum category, String units, String[] possibleNames, Fraction rate, String description) {
             this.category = category;
             this.units = units;
             this.possibleNames = possibleNames;
@@ -252,7 +258,7 @@ public class UnitUtil {
             return possibleNames;
         }
 
-        public BigDecimal getRate() {
+        public Fraction getRate() {
             return rate;
         }
 
@@ -292,6 +298,10 @@ public class UnitUtil {
              * 电压强度
              */
             VOLTAGE("Voltage", Unit.VOL_V, "电压强度"),
+            /**
+             * 时间
+             */
+            TIME("time", Unit.TIME_S, "时间")
 
             ;
             /**
