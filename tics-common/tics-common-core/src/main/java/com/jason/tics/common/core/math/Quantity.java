@@ -2,9 +2,7 @@ package com.jason.tics.common.core.math;
 
 import com.jason.tics.common.core.utils.UnitUtil;
 import com.jason.tics.common.core.utils.UnitUtil.Unit;
-
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+import org.apache.commons.lang3.math.Fraction;
 
 /**
  * @author Jason
@@ -12,29 +10,29 @@ import java.math.RoundingMode;
  * 数量：数值+单位
  */
 public class Quantity {
-    private BigDecimal value;
+    private Fraction value;
     private Unit unit;
 
-    public Quantity(BigDecimal value, Unit unit) {
+    public Quantity(Fraction value, Unit unit) {
         this.value = value;
         this.unit = unit;
     }
 
     public Quantity(String quantity) {
         String[] a = quantity.split(" ");
-        value = new BigDecimal(a[0]);
+        value = Fraction.getFraction(a[0]);
         unit = UnitUtil.getUnit(a[1]);
     }
 
-    public BigDecimal getValue() {
+    public Fraction getValue() {
         return value;
     }
 
-    public BigDecimal getValue(Unit unit){
-        return this.unit.getRate().multiply(value).divide(unit.getRate(), RoundingMode.HALF_UP);
+    public Fraction getValue(Unit unit){
+        return this.unit.getRate().multiplyBy(value);
     }
 
-    public void setValue(BigDecimal value) {
+    public void setValue(Fraction value) {
         this.value = value;
     }
 
@@ -47,7 +45,7 @@ public class Quantity {
     }
 
     public Quantity unitConvert(Unit unit){
-        BigDecimal v = this.unit.getRate().multiply(value).divide(unit.getRate(), RoundingMode.HALF_UP);
+        Fraction v = this.unit.getRate().multiplyBy(value);
         return new Quantity(v, unit);
     }
 
