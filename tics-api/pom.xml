@@ -18,6 +18,8 @@
         <module>tics_api_recommend</module>
         <module>tics-api-content</module>
         <module>tics-api-search</module>
+        <module>tics-api-store</module>
+        <module>tics-api-point</module>
     </modules>
 
     <properties>
