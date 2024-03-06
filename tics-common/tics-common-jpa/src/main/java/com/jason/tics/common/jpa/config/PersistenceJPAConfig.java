@@ -1,11 +1,13 @@
 package com.jason.tics.common.jpa.config;
 
+import com.jason.tics.common.jpa.repository.impl.TicsRepositoryImpl;
 import org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -25,6 +27,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 //开启支持Spring Data web的支持
 @EnableSpringDataWebSupport
+@EnableJpaRepositories(repositoryBaseClass = TicsRepositoryImpl.class)
 public class PersistenceJPAConfig {
     @Autowired
     private DataSource dataSource;
