@@ -33,6 +33,8 @@
         <module>tics-store</module>
         <module>tics-point</module>
         <module>tics-file</module>
+        <module>tics-order</module>
+        <module>tics-payment</module>
     </modules>
 
     <packaging>pom</packaging>

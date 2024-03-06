@@ -22,17 +22,18 @@
 11. gateway：网关，对外提供统一的服务
 12. learn：纪录用户学习的深度和广度，对单词的学习程度，针对性出单词学习
 13. message：站内外消息推送服务
-14. platform：后台管理服务
-15. point：积分，类似钱包
-16. rbac：基于RBAC的用户角色权限管理服务
-17. recommend：推荐服务
-18. search：搜索服务
-19. sentinel：基于sentinel实现的分布式服务管理
-20. store：商城，此版只能通过积分兑换购买
-21. test：集成测试
-22. transaction：全局事务服务
-23. translation：翻译服务
-24. user：用户服务，注册，信息管理
+14. order：订单服务
+15. platform：后台管理服务
+16. point：积分
+17. rbac：基于RBAC的用户角色权限管理服务
+18. recommend：推荐服务
+19. search：搜索服务
+20. sentinel：基于sentinel实现的分布式服务管理
+21. store：商城，此版只能通过积分兑换购买
+22. test：集成测试
+23. transaction：全局事务服务
+24. translation：翻译服务
+25. user：用户服务，注册，信息管理
 
 # 程序端口信息
 
@@ -53,6 +54,7 @@
 2. tics-gateway:18011
 3. tics-file:18002
 4. tics-search:19200
+5. tics_transaction:17788
 
 ### 测试
 
