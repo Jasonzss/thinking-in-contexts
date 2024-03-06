@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @RocketMQMessageListener(topic = RocketMqConstant.TEST_TOPIC,
         consumerGroup = RocketMqConstant.TEST_TOPIC)
 @Slf4j
-public class UserLikeConsumer implements RocketMQListener<Pair<Long, String>> {
+public class TestConsumer implements RocketMQListener<Pair<Long, String>> {
     @Override
     public void onMessage(Pair<Long, String> message) {
         log.info("user["+message.getKey()+"] like the content["+message.getValue()+"]");
