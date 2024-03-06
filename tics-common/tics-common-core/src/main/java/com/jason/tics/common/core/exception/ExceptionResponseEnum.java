@@ -43,6 +43,10 @@ public enum ExceptionResponseEnum implements ServerResponse {
      */
     INVALID_PAYLOAD("6002", HttpStatus.HTTP_INTERNAL_ERROR, "无效的payload消息发送"),
     ELASTICSEARCH_BROKEN_DOWN("6003", HttpStatus.HTTP_INTERNAL_ERROR, "elasticsearch故障"),
+    /**
+     * jpa错误
+     */
+    ID_NOT_FOUND("6004",HttpStatus.HTTP_INTERNAL_ERROR, "错误的实体类，找不到可用id"),
 
     DEVELOPMENT_IN_PROGRESS("7001", HttpStatus.HTTP_INTERNAL_ERROR, "此功能开发中"),
 
@@ -52,11 +56,17 @@ public enum ExceptionResponseEnum implements ServerResponse {
     RESOURCE_NOT_FOUND("8001", HttpStatus.HTTP_NOT_FOUND, "找不到该资源"),
     UNCHANGEABLE_FIELD("8002",HttpStatus.HTTP_BAD_REQUEST, "该字段无法被修改"),
     RESOURCE_ALREADY_EXISTS("8003",HttpStatus.HTTP_CONFLICT, "该资源已存在，无法新增"),
+    FIELD_NOT_EXISTS("8004", HttpStatus.HTTP_NOT_FOUND, "找不到该字段"),
 
     /**
      * 练习模块
      */
-    QUESTION_NOT_EXIST("9001", HttpStatus.HTTP_NOT_FOUND, "不存在的题目")
+    QUESTION_NOT_EXIST("9001", HttpStatus.HTTP_NOT_FOUND, "不存在的题目"),
+
+    /**
+     * 积分模块
+     */
+    INSUFFICIENT_POINT("10001",HttpStatus.HTTP_CONFLICT,"积分不足")
 
 
     ;
