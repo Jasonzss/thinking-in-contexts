@@ -35,5 +35,8 @@ public class RocketMqConstant {
     public static final String CONTENT_AUDIO_DELETE_TOPIC = "content-audio-delete-topic";
     public static final String CONTENT_ESSAY_DELETE_TOPIC = "content-essay-delete-topic";
 
-
+    /**
+     * 订单模块topic
+     */
+    public static final String PLACE_AN_ORDER_TOPIC = "place-an-order-topic";
 }
