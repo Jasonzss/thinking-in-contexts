@@ -66,8 +66,11 @@ public enum ExceptionResponseEnum implements ServerResponse {
     /**
      * 积分模块
      */
-    INSUFFICIENT_POINT("10001",HttpStatus.HTTP_CONFLICT,"积分不足")
-
+    INSUFFICIENT_POINT("10001",HttpStatus.HTTP_CONFLICT,"积分不足"),
+    /**
+     * 订单模块
+     */
+    ORDER_STATUS_UPDATE_LIMIT("11001", HttpStatus.HTTP_UNSUPPORTED_TYPE, "不支持修改的订单类型"),
 
     ;
 
