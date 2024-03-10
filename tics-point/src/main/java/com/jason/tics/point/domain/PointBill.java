@@ -47,7 +47,7 @@ public class PointBill {
      * 账单是否支付完成
      */
     @Convert(converter = BooleanConverter.class)
-    private Boolean isPayed;
+    private Boolean payed;
 
     @CreationTimestamp
     private Date createTime;

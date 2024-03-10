@@ -29,12 +29,12 @@ public class PointWalletServiceImpl implements PointWalletService {
         bill.setBillAmount(billAmount);
         bill.setBillSource(billSource);
 
-        bill.setIsPayed(false);
+        bill.setPayed(false);
         return null;
     }
 
     @Override
-    public PointWallet payBill(long billId) {
+    public PointBill payBill(long billId) {
         PointBill bill = pointBillRepository.getById(billId);
         PointWallet wallet = pointWalletRepository.getById(bill.getUid());
         //判断是收款还是付款
@@ -47,12 +47,10 @@ public class PointWalletServiceImpl implements PointWalletService {
 
         //改动积分数量
         wallet.setBalance(wallet.getBalance().add(bill.getBillAmount()));
-        PointWallet save = pointWalletRepository.save(wallet);
+        pointWalletRepository.save(wallet);
 
         //完成账单
-        bill.setIsPayed(true);
-        pointBillRepository.save(bill);
-
-        return save;
+        bill.setPayed(true);
+        return pointBillRepository.save(bill);
     }
 }

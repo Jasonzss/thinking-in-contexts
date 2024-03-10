@@ -1,7 +1,6 @@
 package com.jason.tics.point.service;
 
 import com.jason.tics.point.domain.PointBill;
-import com.jason.tics.point.domain.PointWallet;
 
 import java.math.BigDecimal;
 
@@ -17,5 +16,5 @@ public interface PointWalletService {
     /**
      * 完成账单
      */
-    PointWallet payBill(long billId);
+    PointBill payBill(long billId);
 }
