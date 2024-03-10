@@ -3,12 +3,11 @@ package com.jason.tics.common.rocketmq.aop;
 import cn.hutool.core.bean.BeanUtil;
 import com.jason.tics.common.core.exception.ExceptionResponseEnum;
 import com.jason.tics.common.core.exception.TicsException;
+import com.jason.tics.common.rocketmq.SendCallbackFactory;
 import com.jason.tics.common.rocketmq.annotation.SendMessage;
 import com.jason.tics.common.rocketmq.config.RocketMqAdapter;
 import com.jason.tics.common.rocketmq.constant.RocketMqConstant;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.rocketmq.client.producer.SendCallback;
-import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -85,7 +84,7 @@ public class RocketMqAspect implements ApplicationContextAware, InitializingBean
             Object[] args = point.getArgs();
             int length = annotation.paramsIndex().length;
             if (length > 1) {
-                //多入参
+                //多入参，封装成map发送
                 Parameter[] params = signature.getMethod().getParameters();
                 Map<Object, Object> map = new HashMap<>();
                 for (int i : annotation.paramsIndex()) {
@@ -108,21 +107,20 @@ public class RocketMqAspect implements ApplicationContextAware, InitializingBean
         //发送消息
         if (annotation.synchronous()){
             //同步发送
-            template.syncSend(annotation.topic(), MessageBuilder.withPayload(payload).build(), RocketMqConstant.TIMEOUT);
+            template.syncSend(annotation.topic(), MessageBuilder.withPayload(payload).build(),
+                    RocketMqConstant.TIMEOUT, annotation.delayLevel());
             log.info("RocketMqAspect syncSend {} message success", annotation.topic());
         }else {
             //异步发送
-            template.asyncSend(annotation.topic(), MessageBuilder.withPayload(payload).build(), new SendCallback() {
-                @Override
-                public void onSuccess(SendResult sendResult) {
-                    log.info("RocketMqAspect asyncSend {} message success", annotation.topic());
-                }
+            SendCallbackFactory sendCallbackFactory;
+            try{
+                sendCallbackFactory = applicationContext.getBean(annotation.sendCallbackFactory());
+            }catch (BeansException e){
+                sendCallbackFactory = annotation.sendCallbackFactory().newInstance();
+            }
 
-                @Override
-                public void onException(Throwable e) {
-                    throw new TicsException("RocketMqAspect asyncSend "+annotation.topic()+" message failed", e);
-                }
-            }, RocketMqConstant.TIMEOUT);
+            template.asyncSend(annotation.topic(), MessageBuilder.withPayload(payload).build(),
+                    sendCallbackFactory.getSendCallback(payload), RocketMqConstant.TIMEOUT, annotation.delayLevel());
         }
 
         return res;

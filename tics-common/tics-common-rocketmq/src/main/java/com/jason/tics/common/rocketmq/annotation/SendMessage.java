@@ -1,6 +1,8 @@
 package com.jason.tics.common.rocketmq.annotation;
 
+import com.jason.tics.common.rocketmq.SendCallbackFactory;
 import com.jason.tics.common.rocketmq.aop.PayloadSource;
+import com.jason.tics.common.rocketmq.component.callback.DefaultSendCallback;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -46,4 +48,16 @@ public @interface SendMessage {
      * @return 转换后的payload的类型
      */
     Class<?> targetPojo() default Void.class;
+
+    /**
+     * 延时发送消息的时间，默认0不延迟
+     * 注意：为了不让业务线程一直阻塞，在使用延迟消息时建议使用异步发送，特别是长时间的延时消息
+     */
+    int delayLevel() default 0;
+
+    /**
+     * 异步消息发送的回调处理的工厂类
+     * 默认先尝试从Spring中获取，获取不到则使用空参构造器反射生成
+     */
+    Class<? extends SendCallbackFactory> sendCallbackFactory() default DefaultSendCallback.class;
 }

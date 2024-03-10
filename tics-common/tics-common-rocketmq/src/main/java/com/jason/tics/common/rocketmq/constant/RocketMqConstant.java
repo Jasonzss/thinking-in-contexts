@@ -5,6 +5,14 @@ package com.jason.tics.common.rocketmq.constant;
  */
 public class RocketMqConstant {
 
+    // 延迟消息等级： 1s 5s 10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m 20m 30m 1h 2h (1-18)
+
+    /**
+     * 未支付订单取消时间的等级
+     * 16级，即30分钟
+     */
+    public static final int ORDER_CANCEL_TIME_LEVEL = 16;
+
     /**
      * 默认的发送消息超时时间
      */
@@ -39,4 +47,5 @@ public class RocketMqConstant {
      * 订单模块topic
      */
     public static final String PLACE_AN_ORDER_TOPIC = "place-an-order-topic";
+    public static final String ORDER_TIME_OUT_TOPIC = "order-time-out-topic";
 }
