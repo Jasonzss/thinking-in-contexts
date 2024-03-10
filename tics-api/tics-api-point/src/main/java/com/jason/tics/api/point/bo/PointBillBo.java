@@ -26,7 +26,7 @@ public class PointBillBo {
     /**
      * 账单是否支付完成
      */
-    private Boolean isPayed;
+    private Boolean payed;
 
     private Date createTime;
     private Date updateTime;
