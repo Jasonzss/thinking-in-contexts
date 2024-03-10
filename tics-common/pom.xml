@@ -12,7 +12,7 @@
 
     <modules>
         <module>tics-common-core</module>
-        <module>tics-common-cache</module>
+        <module>tics-common-redis</module>
         <module>tics-common-rocketmq</module>
         <module>tics-common-mybatis</module>
         <module>tics-common-security</module>

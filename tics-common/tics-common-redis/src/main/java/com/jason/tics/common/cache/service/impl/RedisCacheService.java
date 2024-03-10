@@ -1,6 +1,7 @@
-package com.jason.tics.common.cache.service;
+package com.jason.tics.common.cache.service.impl;
 
 import cn.hutool.core.util.StrUtil;
+import com.jason.tics.common.cache.service.CacheService;
 import com.jason.tics.common.core.exception.ExceptionResponseEnum;
 import com.jason.tics.common.core.exception.TicsException;
 import lombok.extern.slf4j.Slf4j;
@@ -18,12 +19,12 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @Service
-public class RedisCacheService implements CacheService{
+public class RedisCacheService implements CacheService {
     @Autowired
-    private RedisTemplate<String, Object> REDIS_TEMPLATE;
+    private RedisTemplate<String, Object> redisTemplate;
 
     @Autowired
-    private StringRedisTemplate STRING_REDIS_TEMPLATE;
+    private StringRedisTemplate stringRedisTemplate;
 
     // =============================common============================
     /**
@@ -39,7 +40,7 @@ public class RedisCacheService implements CacheService{
         }
         try {
             if (time > 0) {
-                REDIS_TEMPLATE.expire(key, time, TimeUnit.MILLISECONDS);
+                redisTemplate.expire(key, time, TimeUnit.MILLISECONDS);
             }
             return Boolean.TRUE;
         }
@@ -59,7 +60,7 @@ public class RedisCacheService implements CacheService{
             throw new TicsException(ExceptionResponseEnum.INTERNAL_ERROR);
         }
         try {
-            REDIS_TEMPLATE.expire(key, 0, TimeUnit.MILLISECONDS);
+            redisTemplate.expire(key, 0, TimeUnit.MILLISECONDS);
         }
         catch (Exception e) {
             log.error("Set expire error: {}", e.getMessage());
@@ -76,7 +77,7 @@ public class RedisCacheService implements CacheService{
         if (key.contains(StrUtil.SPACE)) {
             throw new TicsException(ExceptionResponseEnum.INTERNAL_ERROR);
         }
-        return REDIS_TEMPLATE.getExpire(key, TimeUnit.MILLISECONDS);
+        return redisTemplate.getExpire(key, TimeUnit.MILLISECONDS);
     }
 
     /**
@@ -90,7 +91,7 @@ public class RedisCacheService implements CacheService{
             throw new TicsException(ExceptionResponseEnum.INTERNAL_ERROR);
         }
         try {
-            return REDIS_TEMPLATE.hasKey(key);
+            return redisTemplate.hasKey(key);
         }
         catch (Exception e) {
              log.error("Error getting hasKey: {}", e.getMessage());
@@ -112,10 +113,10 @@ public class RedisCacheService implements CacheService{
             }
 
             if (key.length == 1) {
-                REDIS_TEMPLATE.delete(key[0]);
+                redisTemplate.delete(key[0]);
             }
             else {
-                REDIS_TEMPLATE.delete(Arrays.asList(key));
+                redisTemplate.delete(Arrays.asList(key));
             }
         }
     }
@@ -132,7 +133,7 @@ public class RedisCacheService implements CacheService{
         if (key.contains(StrUtil.SPACE)) {
             throw new TicsException(ExceptionResponseEnum.INTERNAL_ERROR);
         }
-        return (T) REDIS_TEMPLATE.opsForValue().get(key);
+        return (T) redisTemplate.opsForValue().get(key);
     }
 
     /**
@@ -156,7 +157,7 @@ public class RedisCacheService implements CacheService{
         if (key.contains(StrUtil.SPACE)) {
             throw new TicsException(ExceptionResponseEnum.INTERNAL_ERROR);
         }
-        return Optional.ofNullable((T) REDIS_TEMPLATE.opsForValue().get(key));
+        return Optional.ofNullable((T) redisTemplate.opsForValue().get(key));
     }
 
 
@@ -181,7 +182,7 @@ public class RedisCacheService implements CacheService{
         if (key.contains(StrUtil.SPACE)) {
             throw new TicsException(ExceptionResponseEnum.INTERNAL_ERROR);
         }
-        return (T) REDIS_TEMPLATE.opsForValue().getAndDelete(key);
+        return (T) redisTemplate.opsForValue().getAndDelete(key);
     }
 
     /**
@@ -198,10 +199,10 @@ public class RedisCacheService implements CacheService{
         }
         try {
             if (time > 0) {
-                REDIS_TEMPLATE.opsForValue().set(key, value, time, TimeUnit.MILLISECONDS);
+                redisTemplate.opsForValue().set(key, value, time, TimeUnit.MILLISECONDS);
             }
             else {
-                REDIS_TEMPLATE.opsForValue().set(key, value);
+                redisTemplate.opsForValue().set(key, value);
             }
             return true;
         }
@@ -247,7 +248,7 @@ public class RedisCacheService implements CacheService{
         if (delta < 0) {
             throw new RuntimeException("递增因子必须大于0");
         }
-        return STRING_REDIS_TEMPLATE.opsForValue().increment(key, delta);
+        return stringRedisTemplate.opsForValue().increment(key, delta);
     }
 
     /**
@@ -264,7 +265,7 @@ public class RedisCacheService implements CacheService{
         if (delta < 0) {
             throw new RuntimeException("递减因子必须小于0");
         }
-        return STRING_REDIS_TEMPLATE.opsForValue().increment(key, -delta);
+        return stringRedisTemplate.opsForValue().increment(key, -delta);
     }
 
     @Override
@@ -274,10 +275,10 @@ public class RedisCacheService implements CacheService{
         }
         try {
             if (time > 0) {
-                STRING_REDIS_TEMPLATE.opsForValue().set(key, String.valueOf(value), time, TimeUnit.MILLISECONDS);
+                stringRedisTemplate.opsForValue().set(key, String.valueOf(value), time, TimeUnit.MILLISECONDS);
             }
             else {
-                STRING_REDIS_TEMPLATE.opsForValue().set(key, String.valueOf(value));
+                stringRedisTemplate.opsForValue().set(key, String.valueOf(value));
             }
             return true;
         }
@@ -300,7 +301,7 @@ public class RedisCacheService implements CacheService{
         if (key.contains(StrUtil.SPACE)) {
             throw new TicsException(ExceptionResponseEnum.INTERNAL_ERROR);
         }
-        String result = STRING_REDIS_TEMPLATE.opsForValue().get(key);
+        String result = stringRedisTemplate.opsForValue().get(key);
         if (result == null) {
             return null;
         }
