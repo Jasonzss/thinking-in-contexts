@@ -1,5 +1,6 @@
 package com.jason.tics.order.service;
 
+import com.jason.tics.order.domain.pojo.dto.OrderDto;
 import com.jason.tics.order.domain.pojo.vo.OrderVo;
 
 /**
@@ -14,16 +15,30 @@ public interface OrderService {
     /**
      * 下单
      */
-    OrderVo order();
+    OrderVo order(OrderDto orderDto);
 
     /**
-     * 支付订单
+     * 订单已支付
      */
-    OrderVo pay();
+    OrderVo payed(long orderId);
 
-    OrderVo expressOrder();
+    /**
+     * 订单已发出
+     */
+    OrderVo delivered(long orderId);
 
-    OrderVo finishOrder();
+    /**
+     * 订单已完成
+     */
+    OrderVo finish(long orderId);
 
-    OrderVo cancelOrder();
+    /**
+     * 订单取消
+     */
+    OrderVo cancelOrder(long orderId);
+
+    /**
+     * 订单超时取消
+     */
+    void timeout(long orderId);
 }

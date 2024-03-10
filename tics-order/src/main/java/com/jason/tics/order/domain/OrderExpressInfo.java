@@ -1,5 +1,6 @@
 package com.jason.tics.order.domain;
 
+import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -15,6 +16,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table
+@Builder
 public class OrderExpressInfo {
     @Id
     private Long orderExpressInfoId;
@@ -62,4 +64,8 @@ public class OrderExpressInfo {
     private Date createTime;
     @UpdateTimestamp
     private Date updateTime;
+
+    public OrderExpressInfo() {
+
+    }
 }

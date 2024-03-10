@@ -4,6 +4,7 @@ import com.jason.tics.order.domain.OrderExpressInfo;
 import com.jason.tics.order.domain.OrderItem;
 import com.jason.tics.order.domain.OrderPayInfo;
 import com.jason.tics.order.domain.OrderStatus;
+import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -13,6 +14,7 @@ import java.util.Date;
  * @author Jason
  */
 @Data
+@Builder
 public class OrderVo {
     private Long orderId;
 
@@ -62,4 +64,6 @@ public class OrderVo {
 
     private Date createTime;
     private Date updateTime;
+
+
 }

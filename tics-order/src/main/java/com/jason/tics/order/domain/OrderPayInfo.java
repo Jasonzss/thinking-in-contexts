@@ -1,5 +1,7 @@
 package com.jason.tics.order.domain;
 
+import com.jason.tics.api.store.domain.PayType;
+import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -17,6 +19,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table
+@Builder
 public class OrderPayInfo {
 
     /**
@@ -30,15 +33,14 @@ public class OrderPayInfo {
      */
     private Long uid;
 
-    /**
-     * 订单号
-     */
-    private Long orderId;
+    private Long billId;
 
     /**
      * 实付金额
      */
     private BigDecimal payment;
+
+    private PayType payType;
 
     /**
      * 确认时间
@@ -50,4 +52,6 @@ public class OrderPayInfo {
     @UpdateTimestamp
     private Date updateTime;
 
+    public OrderPayInfo() {
+    }
 }

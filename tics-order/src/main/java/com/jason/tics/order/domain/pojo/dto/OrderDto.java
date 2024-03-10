@@ -1,10 +1,13 @@
 package com.jason.tics.order.domain.pojo.dto;
 
+import lombok.Data;
+
 /**
  * @author Jason
  */
+@Data
 public class OrderDto {
-    //订单地址信息
+    //买家信息
     /**
      * 用户ID
      */

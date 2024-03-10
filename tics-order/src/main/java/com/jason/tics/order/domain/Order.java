@@ -1,6 +1,8 @@
 package com.jason.tics.order.domain;
 
+import com.jason.tics.api.store.domain.PayType;
 import com.jason.tics.common.jpa.converter.BooleanConverter;
+import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -16,9 +18,15 @@ import java.util.Date;
 @Data
 @Entity
 @Table
+@Builder
 public class Order {
     @Id
     private Long orderId;
+
+    /**
+     * 下单用户的id
+     */
+    private Long uid;
 
     private Long orderExpressInfoId;
 
@@ -36,6 +44,8 @@ public class Order {
      * 订单金额（这是还未进行优惠处理的价格）
      */
     private BigDecimal orderAmount;
+
+    private PayType payType;
 
     /**
      * 购买商品数量
@@ -70,4 +80,8 @@ public class Order {
     private Date createTime;
     @UpdateTimestamp
     private Date updateTime;
+
+    public Order() {
+
+    }
 }
