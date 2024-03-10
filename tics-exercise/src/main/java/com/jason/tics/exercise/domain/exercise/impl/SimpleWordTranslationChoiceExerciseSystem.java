@@ -8,14 +8,20 @@ import com.jason.tics.api.learn.feign.FreeSpacedRepetitionSchedulerFeignClient;
 import com.jason.tics.api.translation.feign.TranslationFeignClient;
 import com.jason.tics.common.cache.constant.ExerciseCacheNames;
 import com.jason.tics.common.cache.service.RedisCacheService;
-import com.jason.tics.exercise.domain.exercise.*;
+import com.jason.tics.exercise.domain.exercise.WordChoiceExerciseInfo;
+import com.jason.tics.exercise.domain.exercise.WordLearningTarget;
+import com.jason.tics.exercise.domain.exercise.WordTranslationChoiceExercise;
+import com.jason.tics.exercise.domain.exercise.WordTranslationChoiceExerciseSystem;
 import com.jason.tics.exercise.event.WordTranslationChoiceExerciseEndUpEvent;
 import com.jason.tics.exercise.repository.WordLearningTargetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.SortedSet;
 
 /**
  * @author Jason
