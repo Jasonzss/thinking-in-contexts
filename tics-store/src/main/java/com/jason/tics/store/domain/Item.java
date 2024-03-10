@@ -1,5 +1,6 @@
 package com.jason.tics.store.domain;
 
+import com.jason.tics.api.store.domain.PayType;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,10 +9,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.Length;
 
 import javax.annotation.Nullable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -33,18 +32,11 @@ public class Item {
 
     private String itemName;
 
-    /**
-     * 售价
-     */
-    @Nullable
-    private Long cost;
+    @Enumerated
+    private PayType payType;
 
-    /**
-     * 积分售价
-     * 两种售价为或的关系，只需取其中之一支付即可。属性为null代表无法以此方式支付
-     */
     @Nullable
-    private Long pointCost;
+    private BigDecimal cost;
 
     /**
      * 商品详情

@@ -7,4 +7,7 @@ import com.jason.tics.store.domain.ItemStockLock;
  * @author Jason
  */
 public interface ItemStockLockRepository extends TicsRepository<ItemStockLock, Long> {
+    void deleteByOrderId(long orderId);
+
+    ItemStockLock getByOrderId(long orderId);
 }

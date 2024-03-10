@@ -20,6 +20,7 @@ public class ItemImage {
     private String url;
 
     @Embeddable
+    @Data
     public static class ItemImageId implements Serializable {
         private Long itemId;
         private Integer imageIndex;
