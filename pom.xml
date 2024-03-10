@@ -24,7 +24,6 @@
         <module>tics-message</module>
         <module>tics-ai</module>
         <module>tics-test</module>
-        <module>tics-transaction</module>
         <module>tics-sentinel</module>
         <module>tics-comment</module>
         <module>tics-dictionary</module>
