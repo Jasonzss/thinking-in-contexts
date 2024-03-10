@@ -22,7 +22,6 @@ consumer接收到的对象不为null，但是内部属性全为null
 
 ## 2. 消费成功后又接收到多次空值对象
 
-
 # Elasticsearch
 
 ## 1.无法找到可用证书
