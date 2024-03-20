@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author Jason
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.jason.tics"})
 public class OrderApplication {
     public static void main(String[] args) {
         SpringApplication.run(OrderApplication.class, args);
