@@ -22,6 +22,8 @@ public class RocketMqConstant {
      * 测试topic
      */
     public static final String TEST_TOPIC = "test-topic";
+    public static final String TEST_GROUP_A = "test-group-a";
+    public static final String TEST_GROUP_B = "test-group-b";
 
 
     /**
@@ -48,4 +50,14 @@ public class RocketMqConstant {
      */
     public static final String PLACE_AN_ORDER_TOPIC = "place-an-order-topic";
     public static final String ORDER_TIME_OUT_TOPIC = "order-time-out-topic";
+
+    /**
+     * 搜索模块
+     */
+    public static final String SEARCH_GROUP = "search_group";
+
+    /**
+     * 推荐模块
+     */
+    public static final String RECOMMEND_GROUP = "recommend_group";
 }
