@@ -21,7 +21,6 @@ import java.util.Objects;
 /**
  * @author Jason
  */
-@Deprecated
 public class TicsSortArgumentResolver extends PageableHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
     @Override
     public boolean supportsParameter(@NonNull MethodParameter parameter) {
