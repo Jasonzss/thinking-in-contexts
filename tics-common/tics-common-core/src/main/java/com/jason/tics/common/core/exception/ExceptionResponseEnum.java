@@ -17,6 +17,12 @@ public enum ExceptionResponseEnum implements ServerResponse {
     NO_PERMISSION("2001", HttpStatus.HTTP_UNAUTHORIZED, "无权访问此资源"),
 
     /**
+     * 账号验证相关
+     */
+    USER_NOT_LOGIN("2002", HttpStatus.HTTP_UNAUTHORIZED, "用户未登录"),
+    USER_NOT_FOUND("2003", HttpStatus.HTTP_NOT_FOUND, "未知用户"),
+
+    /**
      * 媒体资源相关
      */
     MEDIA_NOT_FOUND("3001", HttpStatus.HTTP_NOT_FOUND, "无法找到资源"),
