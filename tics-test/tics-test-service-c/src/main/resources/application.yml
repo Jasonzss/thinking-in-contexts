@@ -15,4 +15,4 @@ spring:
 rocketmq:
   name-server: localhost:9876
 server:
-  port: 18902
+  port: 18903

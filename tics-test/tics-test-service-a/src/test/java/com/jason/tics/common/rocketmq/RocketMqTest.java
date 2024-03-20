@@ -30,18 +30,18 @@ public class RocketMqTest {
     }
 
     @Test
-    public void test() throws InterruptedException {
+    public void testAsyncSend() throws InterruptedException {
         testMqTemplate.asyncSend(RocketMqConstant.TEST_TOPIC,
-                MessageBuilder.withPayload(new Pair<>(1L, "1")).build(),
+                MessageBuilder.withPayload(new Pair<>(2L, "2")).build(),
                 new SendCallback() {
                     @Override
                     public void onSuccess(SendResult sendResult) {
-                        log.info("成功！！！！！！！！！！！！！！{}", sendResult);
+                        log.info("异步消息成功！！！！！！！！！！！！！！{}", sendResult);
                     }
 
                     @Override
                     public void onException(Throwable e) {
-                        log.info("失败！！！！！！！！！！！！！！", e);
+                        log.info("异步消息失败！！！！！！！！！！！！！！", e);
                     }
                 });
         log.info("wait-----------------------------------");

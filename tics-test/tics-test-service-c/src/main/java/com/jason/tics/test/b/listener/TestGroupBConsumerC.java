@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @RocketMQMessageListener(topic = RocketMqConstant.TEST_TOPIC,
-        consumerGroup = RocketMqConstant.TEST_TOPIC)
+        consumerGroup = RocketMqConstant.TEST_GROUP_B)
 @Slf4j
-public class TestConsumer implements RocketMQListener<Pair<Long, String>> {
+public class TestGroupBConsumerC implements RocketMQListener<Pair<Long, String>> {
     @Override
     public void onMessage(Pair<Long, String> message) {
-        log.info("user["+message.getKey()+"] like the content["+message.getValue()+"]");
+        log.info("【GroupB - ConsumerC】 user["+message.getKey()+"] like the content["+message.getValue()+"]");
     }
 }
