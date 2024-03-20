@@ -77,8 +77,8 @@ public class ScantronResource {
     @ApiOperation(value = "修改考题")
     @PutMapping("/{id}/question/{index}")
     public ServerResponseEntity<PaperAnswer> modifyAnswer(@PathVariable long id,
-                                                    @PathVariable int index,
-                                                    @RequestParam String... userAnswer){
+                                                          @PathVariable int index,
+                                                          @RequestParam String... userAnswer){
         PaperAnswer paperAnswer = new PaperAnswer();
         paperAnswer.setScantron(new Scantron(id));
         paperAnswer.setIdx(index);
