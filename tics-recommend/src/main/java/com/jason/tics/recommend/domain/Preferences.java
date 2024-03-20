@@ -4,6 +4,7 @@ package com.jason.tics.recommend.domain;
  * @author Jason
  */
 public enum Preferences {
+    AUTHOR("痴迷",12f),
     CRAZY("痴迷",10f),
     FEVER("狂热;热爱", 8f),
     LIKE("喜欢",6f),

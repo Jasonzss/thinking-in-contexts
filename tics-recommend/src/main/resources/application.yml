@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active: @profiles.active@
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  application:
+    name: @artifactId@
+server:
+  port: 18002
