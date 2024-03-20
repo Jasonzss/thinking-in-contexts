@@ -29,7 +29,7 @@ public class StageResource {
     private StageService stageService;
 
     @GetMapping("/stage")
-    public ServerResponseEntity<List<Stage>>  listStages(){
+    public ServerResponseEntity<List<Stage>> listStages(){
         return ServerResponseEntity.success(stageRepository.findAll());
     }
 

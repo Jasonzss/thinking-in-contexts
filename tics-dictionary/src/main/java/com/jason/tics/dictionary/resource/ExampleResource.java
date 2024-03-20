@@ -81,7 +81,7 @@ public class ExampleResource {
     @PostMapping("/{id}/like")
     @PutMapping("/{id}/like")
     public ServerResponseEntity<ExampleLike> saveExampleLike(@Uid long uid, @PathVariable long id,
-                                                         @RequestBody Boolean like){
+                                                             @RequestBody Boolean like){
         return ServerResponseEntity.success(exampleLikeService.saveExampleLike(uid, id, like));
     }
 

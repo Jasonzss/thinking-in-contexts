@@ -1,7 +1,6 @@
 package com.jason.tics.dictionary.resource;
 
 import com.jason.tics.common.core.response.ServerResponseEntity;
-import com.jason.tics.common.security.annotation.SortableEntity;
 import com.jason.tics.dictionary.domain.BookWord;
 import com.jason.tics.dictionary.domain.WordBook;
 import com.jason.tics.dictionary.repository.BookWordRepository;

@@ -54,7 +54,7 @@ public class WebDictionaryResource {
 
     @PostMapping("/web/translation")
     public ServerResponseEntity<WebTranslation> addWebTranslation(String theme, String target,
-                                                                  String translation,@Uid long uid){
+                                                                  String translation, @Uid long uid){
         return ServerResponseEntity.success(webTranslationRepository
                 .save(new WebTranslation(target, theme, uid, translation)));
     }

@@ -4,7 +4,6 @@ import com.jason.tics.common.core.response.ServerResponseEntity;
 import com.jason.tics.dictionary.domain.extension.Note;
 import com.jason.tics.dictionary.repository.NoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
