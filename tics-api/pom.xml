@@ -20,6 +20,9 @@
         <module>tics-api-search</module>
         <module>tics-api-store</module>
         <module>tics-api-point</module>
+        <module>tics-api-user</module>
+        <module>tics-api-rbac</module>
+        <module>tics-api-auth</module>
     </modules>
 
     <properties>

@@ -15,6 +15,6 @@ import org.springframework.web.bind.annotation.*;
 public interface TranslationFeignClient {
     @GetMapping("/translation/{query}")
     ServerResponseEntity<TranslationResult> translate(@PathVariable("query") String query,
-                                                          @Length(max = 1000)
+                                                      @Length(max = 1000)
                            @RequestParam(value = "sentence", required = false) String sentence);
 }
