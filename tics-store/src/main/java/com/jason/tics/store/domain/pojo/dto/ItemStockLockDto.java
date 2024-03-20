@@ -32,9 +32,4 @@ public class ItemStockLockDto implements Dto<Long, ItemStockLock> {
                 .count(count)
                 .build();
     }
-
-    @Override
-    public Long getId() {
-        return itemStockLockId;
-    }
 }

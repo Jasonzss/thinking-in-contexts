@@ -26,12 +26,7 @@ public class ItemStockDto implements Dto<Long, ItemStock> {
     public ItemStock getSource() {
         return ItemStock.builder()
                 .lockStock(lockStock)
-                .stock(stock)
+                .availableStock(stock)
                 .build();
-    }
-
-    @Override
-    public Long getId() {
-        return itemId;
     }
 }
