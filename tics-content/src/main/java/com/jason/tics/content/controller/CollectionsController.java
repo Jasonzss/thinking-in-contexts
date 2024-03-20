@@ -48,19 +48,19 @@ public class CollectionsController {
     }
 
     @GetMapping("/{id}/collection")
-    public ServerResponseEntity<List<Collection>> getCollection(@RequestParam long uid,@RequestParam String contentId) {
+    public ServerResponseEntity<List<Collection>> getCollection(@RequestParam long uid, @RequestParam String contentId) {
         return ServerResponseEntity.success(collectionService.listCollectionByUidAndContentId(uid, contentId));
     }
 
     @PostMapping("/{id}/collection")
-    public ServerResponseEntity<Void> addCollection(@Uid long uid,@RequestParam String contentId,
+    public ServerResponseEntity<Void> addCollection(@Uid long uid, @RequestParam String contentId,
                                                     @RequestParam Long collectionId) {
         Collection collection = new Collection(uid, contentId, collectionId);
         return ServerResponseEntity.successOrShowFail(collectionService.save(collection), "收藏失败");
     }
 
     @DeleteMapping("/{id}/collection")
-    public ServerResponseEntity<Void> deleteCollection(@Uid long uid,@RequestParam String contentId,
+    public ServerResponseEntity<Void> deleteCollection(@Uid long uid, @RequestParam String contentId,
                                                        @RequestParam Long collectionId) {
         Collection collection = new Collection(uid, contentId, collectionId);
         collectionService.deleteCollection(uid, contentId, collectionId);

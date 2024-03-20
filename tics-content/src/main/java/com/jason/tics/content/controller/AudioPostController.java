@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * @author Jason
  */
-@RequestMapping("audio")
+@RequestMapping("content/audio")
 @Controller
 public class AudioPostController {
     @Autowired

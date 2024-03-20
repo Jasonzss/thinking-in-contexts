@@ -2,6 +2,7 @@ package com.jason.tics.content.components;
 
 import com.baomidou.mybatisplus.core.incrementer.DefaultIdentifierGenerator;
 import com.baomidou.mybatisplus.core.incrementer.IdentifierGenerator;
+import com.jason.tics.api.content.bo.ContentType;
 import com.jason.tics.common.core.exception.ExceptionResponseEnum;
 import com.jason.tics.common.core.exception.TicsException;
 import com.jason.tics.content.domain.AudioPost;
@@ -22,11 +23,11 @@ public class ContentKeyGenerator extends DefaultIdentifierGenerator implements I
 
     private String getPrefix(Object entity){
         if (entity instanceof VideoPost){
-            return "v";
+            return ContentType.VIDEO.getIdPrefix();
         }else if(entity instanceof AudioPost){
-            return "a";
+            return ContentType.AUDIO.getIdPrefix();
         }else if(entity instanceof EssayPost){
-            return "e";
+            return ContentType.ESSAY.getIdPrefix();
         }else {
             throw new TicsException(ExceptionResponseEnum.NOT_SUPPORTED_ID_GENERATE_ENTITY);
         }

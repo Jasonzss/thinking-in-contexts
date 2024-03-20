@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * @author Jason
  */
-@RequestMapping("/video")
+@RequestMapping("content/video")
 @Controller
 public class VideoPostController {
     @Autowired

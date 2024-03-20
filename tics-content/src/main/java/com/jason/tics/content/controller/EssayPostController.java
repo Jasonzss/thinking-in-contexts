@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * @author Jason
  */
-@RequestMapping("essay")
+@RequestMapping("content/essay")
 public class EssayPostController {
     private EssayPostService essayPostService;
 
