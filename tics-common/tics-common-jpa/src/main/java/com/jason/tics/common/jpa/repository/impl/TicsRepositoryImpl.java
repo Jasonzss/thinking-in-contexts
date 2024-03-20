@@ -8,10 +8,14 @@ import com.jason.tics.common.jpa.entity.Dto;
 import com.jason.tics.common.jpa.repository.TicsRepository;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 
+import javax.annotation.Nullable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.EntityManager;
 import javax.persistence.Id;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -38,10 +42,11 @@ public class TicsRepositoryImpl<T, ID> extends SimpleJpaRepository<T, ID> implem
                 Object value = entry.getValue();
 
                 //查看是否存在同名字段
-                if (ReflectUtil.hasField(entity.getClass(), attributeName)) {
+                if (ReflectUtil.hasField(clazz, attributeName)) {
                     try {
-                        Field field = entity.getClass().getField(attributeName);
+                        Field field = clazz.getField(attributeName);
                         if (field.getType() == value.getClass()){
+                            //类型相同直接嵌入
                             ReflectUtil.setFieldValue(entity, field, value);
                         }
                     } catch (NoSuchFieldException e) {
@@ -49,7 +54,7 @@ public class TicsRepositoryImpl<T, ID> extends SimpleJpaRepository<T, ID> implem
                     }
                 }else{
                     //不存在同名字段，去内嵌复杂类中查找
-                    for (Field field : entity.getClass().getFields()) {
+                    for (Field field : clazz.getFields()) {
                         if (Primitives.isWrapperType(field.getType())) {
                             continue;
                         }
@@ -73,6 +78,31 @@ public class TicsRepositoryImpl<T, ID> extends SimpleJpaRepository<T, ID> implem
         return entity;
     }
 
+    @Deprecated
+    @Nullable
+    private Method getGetter(Class<?> clazz, String field){
+        Method m = null;
+
+        for (Method method : clazz.getDeclaredMethods()) {
+            String name = method.getName();
+            if (!"getClass".equals(name)) {
+                if (method.getParameterCount() == 0) {
+                    if (name.startsWith("get")){
+                        if (name.substring(3).equalsIgnoreCase(field)) {
+                            m = method;
+                        }
+                    }else if (name.startsWith("is")){
+                        if (name.substring(2).equalsIgnoreCase(field)) {
+                            m = method;
+                        }
+                    }
+                }
+            }
+        }
+
+        return m;
+    }
+
     @Override
     public T addByPojo(Dto<ID, T> dto) {
         return save(dto.getSource());
@@ -82,7 +112,7 @@ public class TicsRepositoryImpl<T, ID> extends SimpleJpaRepository<T, ID> implem
     public T updateByPojo(ID id, Dto<ID, T>  dto) {
         T source = dto.getSource();
         ReflectUtil.setFieldValue(source, getIdField(source), id);
-        return source;
+        return save(source);
     }
 
     private Field getIdField(T source){

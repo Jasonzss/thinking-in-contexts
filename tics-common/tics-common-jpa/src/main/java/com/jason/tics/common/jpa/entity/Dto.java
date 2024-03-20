@@ -6,6 +6,4 @@ package com.jason.tics.common.jpa.entity;
  */
 public interface Dto<ID, T> {
     T getSource();
-
-    ID getId();
 }
