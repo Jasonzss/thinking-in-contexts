@@ -18,7 +18,7 @@ import java.io.IOException;
  */
 @Component
 @RocketMQMessageListener(topic = RocketMqConstant.CONTENT_VIDEO_DELETE_TOPIC,
-        consumerGroup = RocketMqConstant.CONTENT_VIDEO_DELETE_TOPIC)
+        consumerGroup = RocketMqConstant.SEARCH_GROUP)
 @Slf4j
 public class VideoContentDeleteConsumer implements RocketMQListener<String> {
     @Autowired

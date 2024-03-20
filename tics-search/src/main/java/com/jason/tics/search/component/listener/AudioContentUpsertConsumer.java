@@ -18,7 +18,7 @@ import java.io.IOException;
  */
 @Component
 @RocketMQMessageListener(topic = RocketMqConstant.CONTENT_AUDIO_UPSERT_TOPIC,
-        consumerGroup = RocketMqConstant.CONTENT_AUDIO_UPSERT_TOPIC)
+        consumerGroup = RocketMqConstant.SEARCH_GROUP)
 @Slf4j
 public class AudioContentUpsertConsumer implements RocketMQListener<AudioPostBo>{
     @Autowired

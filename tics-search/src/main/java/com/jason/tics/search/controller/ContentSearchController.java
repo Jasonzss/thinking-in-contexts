@@ -17,7 +17,7 @@ public class ContentSearchController {
 
     @GetMapping
     public ServerResponseEntity<?> searchContent(@RequestParam String search, @RequestParam int page,
-                                                 @RequestParam int size,@RequestParam String[] types){
+                                                 @RequestParam int size, @RequestParam String[] types){
         return ServerResponseEntity.success(contentSearchService.searchAll(search, page, size, types));
     }
 }

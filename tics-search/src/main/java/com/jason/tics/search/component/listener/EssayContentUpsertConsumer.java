@@ -18,7 +18,7 @@ import java.io.IOException;
  */
 @Component
 @RocketMQMessageListener(topic = RocketMqConstant.CONTENT_ESSAY_UPSERT_TOPIC,
-        consumerGroup = RocketMqConstant.CONTENT_ESSAY_UPSERT_TOPIC)
+        consumerGroup = RocketMqConstant.SEARCH_GROUP)
 @Slf4j
 public class EssayContentUpsertConsumer implements RocketMQListener<EssayPostBo> {
     @Autowired
