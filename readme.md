@@ -51,13 +51,15 @@
 ### 微服务
 
 1. tics-translation：18001
-2. tics-gateway:18011
-3. tics-file:18002
-4. tics-search:19200
-5. tics_transaction:17788
+2. tics-recommend：18002
+3. tics-gateway:18011
+4. tics-file:18003
+5. tics-search:19200
+6. tics_transaction:17788
 
 ### 测试
 
 1. tics-test
    1. test-service-a：18901
    2. test-service-b：18902
+   3. test-service-c：18903
